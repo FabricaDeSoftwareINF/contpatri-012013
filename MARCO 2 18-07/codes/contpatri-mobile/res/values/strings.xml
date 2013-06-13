@@ -1,5 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello">Hello contpatri.mobile!</string>
-    <string name="app_name">contpatri.mobile</string>
+
+    <string name="app_name">contpatri-mobile</string>
+	<string name="contpatri">ContPatri</string>
+	<string name="contpatri_maiusculo">CONTPATRI</string>
+	<string name="controle_patrimonio">Controle de Patrimônio</string>
+	<string name="usuario">Usuário</string>
+	<string name="senha">Senha</string>
+	<string name="entrar">Entrar</string>
+	
 </resources>
