@@ -1,11 +1,17 @@
 <resources>
 
-    <string name="app_name">contpatri-mobile</string>
+    <string name="app_name">CONTPATRI</string>
 	<string name="contpatri">ContPatri</string>
 	<string name="contpatri_maiusculo">CONTPATRI</string>
 	<string name="controle_patrimonio">Controle de Patrimônio</string>
 	<string name="usuario">Usuário</string>
 	<string name="senha">Senha</string>
 	<string name="entrar">Entrar</string>
+	<string name="coletar">Coletar</string>
+	<string name="atualizar">Atualizar</string>
+	<string name="sair">Sair</string>
+	<string name="local">Local</string>
+	<string name="codigo">Código</string>
+	<string name="foto">Foto</string>
 	
 </resources>
