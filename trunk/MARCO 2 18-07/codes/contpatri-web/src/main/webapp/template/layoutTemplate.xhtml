@@ -9,29 +9,22 @@
         <link href="./css/default.css" rel="stylesheet" type="text/css" />
         <link href="./css/cssLayout.css" rel="stylesheet" type="text/css" />
         <h:outputStylesheet library="css" name="estilo.css"/>
-        <title>ContPatri</title>
+        <title>#{pagina} - ContPatri</title>
     </h:head>
 
     <h:body>
-
         <div id="top">
-            <ui:insert name="cabecalho">
-                <ui:include src="/template/cabecalho.xhtml" />
-            </ui:insert>
+             <ui:include src="/template/cabecalho.xhtml" >
+                 <ui:param name="pagina" value="#{pagina}"/>
+             </ui:include>
         </div>
-        
+
         <div id="menu-superior">
-            <ui:insert name="menu-superior">
-                <ui:include src="/template/menuSuperior.xhtml" />
-            </ui:insert>
+            <ui:include src="/template/menuSuperior.xhtml" />
         </div>
 
         <div id="content" class="center_content">
-            <ui:insert name="content"></ui:insert>
-        </div>
-
-        <div id="bottom">
-            <ui:insert name="bottom"></ui:insert>
+            <ui:insert name="conteudo"></ui:insert>
         </div>
 
     </h:body>
