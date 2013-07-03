@@ -56,6 +56,12 @@ a {
     text-shadow: 0 1px 0 #fff;
 }
 
+#logado{
+    position: absolute;
+    right: 10px;
+    top: 40px;
+}
+
 #menu-superior{
     height: 80px;
     background: #404040;
@@ -66,7 +72,6 @@ a {
 
 #lista-menu{
     margin: 10px 3%;
-    min-width: 1214px;
 }
 
 .item-menu{
@@ -74,6 +79,7 @@ a {
     float: left;
     margin-left: 8px;
 }
+
 
 .item-menu img {
     width: 30px;
@@ -83,7 +89,6 @@ a {
 
 .item-menu p {
     font-size: 11px;
-    font-weight: 600;
     text-align: center;
 }
 
@@ -95,5 +100,58 @@ a {
 
 .item-menu:hover {
     border-radius: 3px;
-    box-shadow: inset 0px 0px 1px 0px #000;
+    background-color: #505050;
+}
+
+.item-menu:active {
+    border-radius: 3px;
+    box-shadow: inset 1px 1px 1px 1px #000;
+    background-color: #505050;
+    padding:4px 2px 2px 4px;
+    margin:1px;
+    text-decoration:none;
+}
+
+.item-menu.selecionado{
+    border-radius: 3px;
+    box-shadow: inset 1px 1px 1px 1px #000;
+}
+
+#gestores{
+    float: right;
+    margin-right: 3%;
+}
+
+.container{
+    margin: 30px;
+}
+
+.container-centro{
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 600px;
+}
+.titulo-painel{
+    background: #393939;
+    border-radius: 2px;
+    max-height: 40px;
+}
+
+.titulo-painel h2{
+    padding: 10px 10px;
+    color: #ddd;
+    font-size: 14px;
+    font-weight: 600;
+    text-shadow: 0 1px 0 #222;
+}
+
+.painel{
+    background: #eee;
+    border: 1px solid #bbb;
+    border-top: none;
+}
+
+.icone-adicionar{
+    background-image: url("#{resource['img:adicionar.png']}")
 }
