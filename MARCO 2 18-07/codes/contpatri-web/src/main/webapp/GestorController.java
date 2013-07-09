@@ -1,4 +1,4 @@
-package br.ufg.inf.es.fs.contpatri.web.controller;
+
 
 import br.ufg.inf.es.fs.contpatri.contpatri.model.Gestor;
 import java.io.Serializable;
