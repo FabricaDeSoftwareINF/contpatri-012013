@@ -68,7 +68,7 @@ public class TombamentoTest {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void criarTombamentoDataInvalida1() {
-		Tombamento tombamento;
-		tombamento = new Tombamento("123", null);
+		@SuppressWarnings("unused")
+		Tombamento tombamento = new Tombamento("123", null);
 	}
 }

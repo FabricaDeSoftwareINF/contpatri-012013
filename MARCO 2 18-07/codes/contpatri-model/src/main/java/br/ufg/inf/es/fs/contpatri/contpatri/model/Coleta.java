@@ -22,8 +22,6 @@
 
 package br.ufg.inf.es.fs.contpatri.contpatri.model;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
 import java.io.Serializable;
 
 /**

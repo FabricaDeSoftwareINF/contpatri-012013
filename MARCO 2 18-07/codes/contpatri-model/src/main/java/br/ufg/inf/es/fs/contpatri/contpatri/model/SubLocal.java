@@ -27,6 +27,7 @@ import java.io.Serializable;
  *
  * @author Emerson Jose Porfirio
  */
+@SuppressWarnings("serial")
 public class SubLocal implements Serializable, Cloneable {
 
 	private Long id;

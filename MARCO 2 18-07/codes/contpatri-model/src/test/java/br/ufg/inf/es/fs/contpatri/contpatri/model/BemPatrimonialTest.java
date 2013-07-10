@@ -19,7 +19,6 @@
  */
 package br.ufg.inf.es.fs.contpatri.contpatri.model;
 
-import java.util.Date;
 import org.junit.Test;
 import static junit.framework.Assert.*;
 import static org.mockito.Mockito.mock;
