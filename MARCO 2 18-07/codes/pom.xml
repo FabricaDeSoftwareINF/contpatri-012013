@@ -9,6 +9,6 @@
       <module>contpatri-mobile</module>
       <module>contpatri-model</module>
       <module>contpatri-sicop</module>
-      <module>contpatriweb</module>
+      <module>contpatri-web</module>
   </modules>
 </project>
