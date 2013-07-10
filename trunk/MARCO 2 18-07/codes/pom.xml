@@ -6,7 +6,6 @@
   <packaging>pom</packaging>
   <name>ContPatri</name>
   <modules>
-      <module>contpatri-mobile</module>
       <module>contpatri-model</module>
       <module>contpatri-sicop</module>
       <module>contpatri-web</module>
