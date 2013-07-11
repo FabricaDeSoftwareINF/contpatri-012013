@@ -47,7 +47,7 @@ public class Inventario implements Serializable {
 		this.adicionarAnalisados(bensPatrimoniais);
 	}
 
-	private void adicionarAnalisados(List<BemPatrimonial> bensPatrimoniais) {
+	private final void adicionarAnalisados(List<BemPatrimonial> bensPatrimoniais) {
 		if (bensPatrimoniais == null || bensPatrimoniais.isEmpty()) {
 			throw new IllegalArgumentException("A lista de bens analisados deve ter ao menos um elemento.");
 		}
@@ -112,7 +112,7 @@ public class Inventario implements Serializable {
 		return this.dataFechamento;
 	}
 
-	public Gestor getGestor() {
+	public Gestor getGestor() throws CloneNotSupportedException {
 		return gestor.clone();
 	}
 

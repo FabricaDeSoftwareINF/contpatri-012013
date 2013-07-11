@@ -24,7 +24,7 @@ import java.io.Serializable;
 /**
  * Identifica o Gestor de Patrimônio responsável pela gestão dos bens
  * patrimoniais da Unidade da UFG.
- *
+ * 
  * @author Emerson Jose Porfirio
  */
 public class Gestor implements Serializable, Cloneable {
@@ -46,7 +46,8 @@ public class Gestor implements Serializable, Cloneable {
 
 	private void setEmail(String email) {
 		if (email == null) {
-			throw new IllegalArgumentException("Campo email deve ser preenchido");
+			throw new IllegalArgumentException(
+					"Campo email deve ser preenchido");
 		}
 		this.email = email;
 	}
@@ -57,7 +58,7 @@ public class Gestor implements Serializable, Cloneable {
 
 	/**
 	 * Identificador interno para a aplicação
-	 *
+	 * 
 	 * @return
 	 */
 	public Long getId() {
@@ -70,7 +71,7 @@ public class Gestor implements Serializable, Cloneable {
 
 	/**
 	 * Nome do Gestor responsável pelos bens patrimoniais da Unidade da UFG
-	 *
+	 * 
 	 * @return
 	 */
 	public String getNome() {
@@ -79,15 +80,16 @@ public class Gestor implements Serializable, Cloneable {
 
 	private void setNome(String nome) {
 		if (nome == null || nome.trim().length() == 0 || nome.length() > 60) {
-			throw new IllegalArgumentException(String.format("Valor inválido para o atributo nome: '%s'", nome));
+			throw new IllegalArgumentException(String.format(
+					"Valor inválido para o atributo nome: '%s'", nome));
 		}
 		this.nome = nome;
 	}
 
 	/**
-	 * Identificação funcional do Gestor; número de registro junto ao
-	 * sistema de recursos humanos da UFG.
-	 *
+	 * Identificação funcional do Gestor; número de registro junto ao sistema de
+	 * recursos humanos da UFG.
+	 * 
 	 * @return
 	 */
 	public String getMatricula() {
@@ -96,7 +98,8 @@ public class Gestor implements Serializable, Cloneable {
 
 	private void setMatricula(String matricula) {
 		if (matricula == null || matricula.trim().equals("")) {
-			throw new IllegalArgumentException("Matricula nao pode ser nula ou vazia");
+			throw new IllegalArgumentException(
+					"Matricula nao pode ser nula ou vazia");
 		}
 		Long.parseLong(matricula);
 		this.matricula = matricula;
@@ -114,8 +117,8 @@ public class Gestor implements Serializable, Cloneable {
 			return true;
 		}
 		Gestor outroGestor = (Gestor) outro;
-		return !((this.matricula.compareTo(outroGestor.matricula) != 0)
-			|| (this.nome.compareTo(outroGestor.nome) != 0));
+		return !((this.matricula.compareTo(outroGestor.matricula) != 0) || (this.nome
+				.compareTo(outroGestor.nome) != 0));
 	}
 
 	public int hashCode() {
@@ -125,12 +128,8 @@ public class Gestor implements Serializable, Cloneable {
 		return hash;
 	}
 
-	public Gestor clone() {
-		try {
-			Gestor clone = (Gestor) super.clone();
-			return clone;
-		} catch (CloneNotSupportedException e) {
-			throw new Error("Assertion failure");
-		}
+	public Gestor clone() throws CloneNotSupportedException {
+		Gestor clone = (Gestor) super.clone();
+		return clone;
 	}
 }

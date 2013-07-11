@@ -80,8 +80,9 @@ public class Agente implements Serializable, Cloneable {
 	}
 
 	private void setNome(String nome) {
-		if (nome == null || nome.trim().length() == 0 || nome.length() > 60)
+		if (nome == null || nome.trim().length() == 0 || nome.length() > 60) {
 			throw new IllegalArgumentException(String.format("Valor inválido para o atributo nome: '%s'", nome));
+		}			
 		this.nome = nome;
 	}
 
@@ -96,17 +97,24 @@ public class Agente implements Serializable, Cloneable {
 	}
 
 	private void setMatricula(String matricula) {
-		if (matricula == null || matricula.trim().equals(""))
+		if (matricula == null || matricula.trim().equals("")) {
 			throw new IllegalArgumentException("Matricula nao pode ser nula ou vazia");
+		}			
 		Long.parseLong(matricula);
 		this.matricula = matricula;
 	}
 
 	@Override
 	public boolean equals(Object outro) {
-		if (outro == null) return false;
-		if (!(outro instanceof Agente)) return false;
-		if (this == outro) return true;
+		if (outro == null) {
+			return false;
+		}
+		if (!(outro instanceof Agente)) {
+			return false;
+		}
+		if (this == outro) {
+			return true;
+		}
 		Agente outroAgente = (Agente) outro;
 		return !((this.matricula.compareTo(outroAgente.matricula) != 0)
 				|| (this.nome.compareTo(outroAgente.nome) != 0));
@@ -119,13 +127,9 @@ public class Agente implements Serializable, Cloneable {
 		return hash;
 	}
 
-	public Agente clone() {
-		try {
+	public Agente clone() throws CloneNotSupportedException {		
 			Agente clone = (Agente) super.clone();
-			return clone;
-		} catch (CloneNotSupportedException e) {
-			throw new Error("Assertion failure");
-		}
+			return clone;		
 	}
    
 }

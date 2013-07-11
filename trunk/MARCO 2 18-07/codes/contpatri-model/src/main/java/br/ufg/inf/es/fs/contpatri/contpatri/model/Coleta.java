@@ -75,7 +75,7 @@ public class Coleta implements Serializable {
 		return bemPatrimonial;
 	}
 
-	public void setBemPatrimonial(BemPatrimonial bemPatrimonial) throws IllegalArgumentException {
+	public final void setBemPatrimonial(BemPatrimonial bemPatrimonial) throws IllegalArgumentException {
 		if (bemPatrimonial == null) throw new IllegalArgumentException("O bem não pode ser nulo");
 		this.bemPatrimonial = bemPatrimonial;
 	}
@@ -84,8 +84,10 @@ public class Coleta implements Serializable {
 		return inventario;
 	}
 
-	public void setInventario(Inventario inventario) throws IllegalArgumentException {
-		if (inventario == null) throw new IllegalArgumentException("O inventário não pode ser nulo");
+	public final void setInventario(Inventario inventario) throws IllegalArgumentException {
+		if (inventario == null) {
+			throw new IllegalArgumentException("O inventário não pode ser nulo");
+		}
 		this.inventario = inventario;
 	}
 
@@ -93,17 +95,25 @@ public class Coleta implements Serializable {
 		return situacao;
 	}
 
-	public void setSituacao(TipoSituacaoColeta situacao) throws IllegalArgumentException {
+	public final void setSituacao(TipoSituacaoColeta situacao) throws IllegalArgumentException {
 		this.situacao = situacao;
 	}
 
 	@Override
 	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
 		Coleta confere = (Coleta) o;
-		if (!bemPatrimonial.equals(confere.bemPatrimonial)) return false;
-		if (!inventario.equals(confere.inventario)) return false;
+		if (!bemPatrimonial.equals(confere.bemPatrimonial)) {
+			return false;
+		}
+		if (!inventario.equals(confere.inventario)) {
+			return false;
+		}
 		return true;
 	}
 
