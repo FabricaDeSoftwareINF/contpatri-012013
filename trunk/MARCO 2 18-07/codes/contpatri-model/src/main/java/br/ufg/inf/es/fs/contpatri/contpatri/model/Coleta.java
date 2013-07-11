@@ -76,7 +76,9 @@ public class Coleta implements Serializable {
 	}
 
 	public final void setBemPatrimonial(BemPatrimonial bemPatrimonial) throws IllegalArgumentException {
-		if (bemPatrimonial == null) throw new IllegalArgumentException("O bem não pode ser nulo");
+		if (bemPatrimonial == null) {
+			throw new IllegalArgumentException("O bem não pode ser nulo");
+		}
 		this.bemPatrimonial = bemPatrimonial;
 	}
 

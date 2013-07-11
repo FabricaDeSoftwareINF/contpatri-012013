@@ -39,7 +39,7 @@ public class Tombamento implements Serializable, Cloneable {
 		return tipoTombamento;
 	}
 
-	public void setTipoTombamento(TipoTombamento tipoTombamento) {
+	public final void setTipoTombamento(TipoTombamento tipoTombamento) {
 		this.tipoTombamento = tipoTombamento;
 	}
 
