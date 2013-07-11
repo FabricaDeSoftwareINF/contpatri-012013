@@ -129,7 +129,6 @@ public class Gestor implements Serializable, Cloneable {
 	}
 
 	public Gestor clone() throws CloneNotSupportedException {
-		Gestor clone = (Gestor) super.clone();
-		return clone;
+		return(Gestor) super.clone();
 	}
 }

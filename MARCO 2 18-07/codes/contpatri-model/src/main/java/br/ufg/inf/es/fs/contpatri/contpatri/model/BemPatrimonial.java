@@ -45,7 +45,7 @@ public class BemPatrimonial implements Serializable, Cloneable {
 		setSubLocal(subLocal);
 	}
 
-	public void setSubLocal(SubLocal subLocal) {
+	public final void setSubLocal(SubLocal subLocal) {
 		if (subLocal == null) {
 			throw new IllegalArgumentException("O Sub Local não pode ser nulo.");
 		}
@@ -80,7 +80,7 @@ public class BemPatrimonial implements Serializable, Cloneable {
 		return descricao;
 	}
 
-	public void setDescricao(String descricaoBreve)
+	public final void setDescricao(String descricaoBreve)
 			throws IllegalArgumentException {
 		if (descricaoBreve == null || descricaoBreve.trim().isEmpty()) {
 			throw new IllegalArgumentException(
@@ -93,7 +93,7 @@ public class BemPatrimonial implements Serializable, Cloneable {
 		return origem.clone();
 	}
 
-	public void setOrigem(Origem origem) throws IllegalArgumentException {
+	public final void setOrigem(Origem origem) throws IllegalArgumentException {
 		if (origem == null) {
 			throw new IllegalArgumentException("A origem não pode ser nula");
 		}
