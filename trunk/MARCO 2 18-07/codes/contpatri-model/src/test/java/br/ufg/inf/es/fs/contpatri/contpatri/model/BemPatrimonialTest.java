@@ -34,7 +34,7 @@ public class BemPatrimonialTest {
         public static final SubLocal SUBLOCAL = mock(SubLocal.class);
 
     @Test
-    public void testarBemPatrimonialValido() {
+    public void testarBemPatrimonialValido() throws CloneNotSupportedException {
         Origem origem = new Origem("CNPQ", "Fundo de Descentralização do MEC");
         SubLocal subLocal = new SubLocal("Sala 6");
         BemPatrimonial bem = new BemPatrimonial("Computador DELL",
@@ -75,7 +75,7 @@ public class BemPatrimonialTest {
     }
 
     @Test
-    public void testarBemPatrimonialCloneGestor() {
+    public void testarBemPatrimonialCloneGestor() throws CloneNotSupportedException {
         Gestor resp = new Gestor("Emerson", "123456", "emerson@ufg.inf.br");
         BemPatrimonial bem = new BemPatrimonial("Computador", ORIGEM, SUBLOCAL);
         bem.setGestor(resp);
@@ -84,7 +84,7 @@ public class BemPatrimonialTest {
     }
 
     @Test
-    public void testarBemPatrimonialCloneOrigem() {
+    public void testarBemPatrimonialCloneOrigem() throws CloneNotSupportedException {
         Origem origem = new Origem("CNPQ", "Fundo de Descentralização");
         BemPatrimonial bem = new BemPatrimonial("Computador", origem, SUBLOCAL);
         assertTrue(origem != bem.getOrigem());
@@ -92,7 +92,7 @@ public class BemPatrimonialTest {
     }
 
     @Test
-    public void testarBemPatrimonialCloneSubLocal() {
+    public void testarBemPatrimonialCloneSubLocal() throws CloneNotSupportedException {
         SubLocal local = new SubLocal("Sala 6");
         BemPatrimonial bem = new BemPatrimonial("Computador DELL",
                 ORIGEM, local);

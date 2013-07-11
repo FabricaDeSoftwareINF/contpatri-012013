@@ -51,7 +51,7 @@ public class InventarioTest {
 	}
 
 	@Test
-	public void testarInventarioValido() {
+	public void testarInventarioValido() throws CloneNotSupportedException {
 		Inventario inventario = new Inventario(EMISSAO, mockGestor, listaBensSoUmItem);
 		assertNull(inventario.getDataFechamento());
 		Date dataFechamento = new Date();
@@ -84,7 +84,7 @@ public class InventarioTest {
 	}
 
 	@Test
-	public void testarInventarioCloneGestor() {
+	public void testarInventarioCloneGestor() throws CloneNotSupportedException {
 		Gestor resp = new Gestor("João Bosco", "123456", "joaobosco@ufg.inf");
 		Inventario inventario = new Inventario(EMISSAO, resp, listaBensSoUmItem);
 		assertTrue(resp != inventario.getGestor());
