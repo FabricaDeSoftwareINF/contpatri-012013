@@ -33,13 +33,23 @@ public class Tombamento implements Serializable, Cloneable {
 	private Long id;
 	private String codTombamento;
 	private Date dataTombamento;
+        private TipoTombamento tipoTombamento;
+
+    public TipoTombamento getTipoTombamento() {
+        return tipoTombamento;
+    }
+
+    public void setTipoTombamento(TipoTombamento tipoTombamento) {
+        this.tipoTombamento = tipoTombamento;
+    }
 
 	public Tombamento() {
 	}
 
-	public Tombamento(String codTombamento, Date dataTombamento) throws IllegalArgumentException {
+	public Tombamento(String codTombamento, Date dataTombamento, TipoTombamento tipoTombamento) throws IllegalArgumentException {
 		setCodTombamento(codTombamento);
 		setDataTombamento(dataTombamento);
+                setTipoTombamento(tipoTombamento);
 	}
 
 	public Long getId() {
