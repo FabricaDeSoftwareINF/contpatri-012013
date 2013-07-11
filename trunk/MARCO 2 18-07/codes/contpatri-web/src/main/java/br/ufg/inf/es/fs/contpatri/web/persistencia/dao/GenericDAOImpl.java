@@ -93,9 +93,9 @@ abstract class GenericDAOImpl<T, ID extends Serializable> implements
 	@Override
 	public List findAll(Class clazz) {
 		Session hibernateSession = this.getSession();
-		List T = null;
+		List t = null;
 		Query query = hibernateSession.createQuery("from " + clazz.getName());
-		T = query.list();
+		t = query.list();
 		return T;
 	}
 }
