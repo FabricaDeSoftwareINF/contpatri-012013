@@ -60,8 +60,9 @@ public class Origem implements Serializable, Cloneable {
 	}
 
 	private void setResumo(String resumo) {
+		final int limiteResumo = 40;
 		if (resumo == null || resumo.trim().length() == 0
-				|| resumo.length() > 40) {
+				|| resumo.length() > limiteResumo) {
 			throw new IllegalArgumentException(String.format(
 					"Valor inválido para o atributo resumo: '%s'.", resumo));
 		}
@@ -98,9 +99,14 @@ public class Origem implements Serializable, Cloneable {
 	}
 
 	public int hashCode() {
-		int hash = 1;
-		hash = hash * 31 + (resumo.isEmpty() ? 0 : resumo.hashCode());
-		hash = hash * 31 + (detalhe.isEmpty() ? 0 : detalhe.hashCode());
+		final int valorInicial = 1;
+		final int valorIncremental = 31;
+
+		int hash = valorInicial;
+		hash = hash * valorIncremental
+				+ (resumo.isEmpty() ? 0 : resumo.hashCode());
+		hash = hash * valorIncremental
+				+ (detalhe.isEmpty() ? 0 : detalhe.hashCode());
 		return hash;
 	}
 

@@ -124,13 +124,16 @@ public class Tombamento implements Serializable, Cloneable {
 
 	@Override
 	public int hashCode() {
-		int hash = 7;
-		hash = 89 * hash + (this.id != null ? this.id.hashCode() : 0);
-		hash = 89
+		final int valorInicial = 7;
+		final int valorIncremental = 89;
+		
+		int hash = valorInicial;
+		hash = valorIncremental * hash + (this.id != null ? this.id.hashCode() : 0);
+		hash = valorIncremental
 				* hash
 				+ (this.codTombamento != null ? this.codTombamento.hashCode()
 						: 0);
-		hash = 89
+		hash = valorIncremental
 				* hash
 				+ (this.dataTombamento != null ? this.dataTombamento.hashCode()
 						: 0);

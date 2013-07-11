@@ -82,8 +82,12 @@ public class SubLocal implements Serializable, Cloneable {
 
 	@Override
 	public int hashCode() {
-		int hash = 7;
-		hash = 23 * hash + (getId() != null ? getId().hashCode() : 0);
+		final int valorInicial = 7;
+		final int valorIncremental = 23;
+
+		int hash = valorInicial;
+		hash = valorIncremental * hash
+				+ (getId() != null ? getId().hashCode() : 0);
 		return hash;
 	}
 }
