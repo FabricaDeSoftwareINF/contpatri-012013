@@ -38,7 +38,7 @@ public class TombamentoTest {
 	@Test
 	public void criarTombamentoValido() throws ParseException {
 		Date dataTombamento = new SimpleDateFormat("dd/MM/yyyy").parse("18/05/2013");
-		Tombamento tombamento = new Tombamento("107", dataTombamento);
+		Tombamento tombamento = new Tombamento("107", dataTombamento, TipoTombamento.EXTERNO);
 		assertEquals("107", tombamento.getCodTombamento());
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(tombamento.getDataTombamento());
@@ -51,24 +51,24 @@ public class TombamentoTest {
 	@Test(expected = IllegalArgumentException.class)
 	public void criarTombamentoCodigoInvalido1() throws ParseException {
 		new Tombamento(null,
-			new SimpleDateFormat("dd/MM/yyyy").parse("18/05/2013"));
+			new SimpleDateFormat("dd/MM/yyyy").parse("18/05/2013"), TipoTombamento.EXTERNO);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void criarTombamentoCodigoInvalido2() throws ParseException {
 		new Tombamento("",
-			new SimpleDateFormat("dd/MM/yyyy").parse("18/05/2013"));
+			new SimpleDateFormat("dd/MM/yyyy").parse("18/05/2013"), TipoTombamento.EXTERNO);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void criarTombamentoCodigoInvalido3() throws ParseException {
 		new Tombamento("   ",
-			new SimpleDateFormat("dd/MM/yyyy").parse("18/05/2013"));
+			new SimpleDateFormat("dd/MM/yyyy").parse("18/05/2013"), TipoTombamento.EXTERNO);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void criarTombamentoDataInvalida1() {
 		@SuppressWarnings("unused")
-		Tombamento tombamento = new Tombamento("123", null);
+		Tombamento tombamento = new Tombamento("123", null, TipoTombamento.EXTERNO);
 	}
 }
