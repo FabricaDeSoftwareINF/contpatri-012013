@@ -24,7 +24,7 @@ import java.util.Date;
 
 /**
  * Código de tombamento de um bem patrimonial Imutável.
- *
+ * 
  * @author Emerson Jose Porfirio
  */
 public class Tombamento implements Serializable, Cloneable {
@@ -33,23 +33,24 @@ public class Tombamento implements Serializable, Cloneable {
 	private Long id;
 	private String codTombamento;
 	private Date dataTombamento;
-        private TipoTombamento tipoTombamento;
+	private TipoTombamento tipoTombamento;
 
-    public TipoTombamento getTipoTombamento() {
-        return tipoTombamento;
-    }
+	public TipoTombamento getTipoTombamento() {
+		return tipoTombamento;
+	}
 
-    public void setTipoTombamento(TipoTombamento tipoTombamento) {
-        this.tipoTombamento = tipoTombamento;
-    }
+	public void setTipoTombamento(TipoTombamento tipoTombamento) {
+		this.tipoTombamento = tipoTombamento;
+	}
 
 	public Tombamento() {
 	}
 
-	public Tombamento(String codTombamento, Date dataTombamento, TipoTombamento tipoTombamento) throws IllegalArgumentException {
+	public Tombamento(String codTombamento, Date dataTombamento,
+			TipoTombamento tipoTombamento) throws IllegalArgumentException {
 		setCodTombamento(codTombamento);
 		setDataTombamento(dataTombamento);
-                setTipoTombamento(tipoTombamento);
+		setTipoTombamento(tipoTombamento);
 	}
 
 	public Long getId() {
@@ -61,10 +62,10 @@ public class Tombamento implements Serializable, Cloneable {
 	}
 
 	/**
-	 * Número que identifica o tombamento.Esse código fica afixado ao bem
-	 * seja por uma plaqueta metálica ou por uma etiqueta comum (código de
-	 * barras, QR-code ou somente números).
-	 *
+	 * Número que identifica o tombamento.Esse código fica afixado ao bem seja
+	 * por uma plaqueta metálica ou por uma etiqueta comum (código de barras,
+	 * QR-code ou somente números).
+	 * 
 	 * @return String
 	 */
 	public String getCodTombamento() {
@@ -73,14 +74,15 @@ public class Tombamento implements Serializable, Cloneable {
 
 	private void setCodTombamento(String codTombamento) {
 		if (codTombamento == null || codTombamento.trim().isEmpty()) {
-			throw new IllegalArgumentException("O código de tombamento deve ser informado");
+			throw new IllegalArgumentException(
+					"O código de tombamento deve ser informado");
 		}
 		this.codTombamento = codTombamento;
 	}
 
 	/**
 	 * Data em que o tombamento foi realizado
-	 *
+	 * 
 	 * @return String
 	 */
 	public Date getDataTombamento() {
@@ -89,20 +91,17 @@ public class Tombamento implements Serializable, Cloneable {
 
 	private void setDataTombamento(Date dataTombamento) {
 		if (dataTombamento == null) {
-			throw new IllegalArgumentException("A data de tombamento deve ser informada");
+			throw new IllegalArgumentException(
+					"A data de tombamento deve ser informada");
 		}
 		this.dataTombamento = dataTombamento;
 	}
 
 	@Override
-	public Tombamento clone() {
-		try {
-			Tombamento clone = (Tombamento) super.clone();
-			clone.setDataTombamento((Date) this.dataTombamento.clone());
-			return clone;
-		} catch (CloneNotSupportedException e) {
-			throw new Error("Assertion failure");
-		}
+	public Tombamento clone() throws CloneNotSupportedException {
+		Tombamento clone = (Tombamento) super.clone();
+		clone.setDataTombamento((Date) this.dataTombamento.clone());
+		return clone;
 	}
 
 	@Override
@@ -127,8 +126,14 @@ public class Tombamento implements Serializable, Cloneable {
 	public int hashCode() {
 		int hash = 7;
 		hash = 89 * hash + (this.id != null ? this.id.hashCode() : 0);
-		hash = 89 * hash + (this.codTombamento != null ? this.codTombamento.hashCode() : 0);
-		hash = 89 * hash + (this.dataTombamento != null ? this.dataTombamento.hashCode() : 0);
+		hash = 89
+				* hash
+				+ (this.codTombamento != null ? this.codTombamento.hashCode()
+						: 0);
+		hash = 89
+				* hash
+				+ (this.dataTombamento != null ? this.dataTombamento.hashCode()
+						: 0);
 		return hash;
 	}
 }
