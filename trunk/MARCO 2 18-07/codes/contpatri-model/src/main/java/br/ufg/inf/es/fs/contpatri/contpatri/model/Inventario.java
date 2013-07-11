@@ -25,7 +25,7 @@ import java.util.*;
 /**
  * Representa um processo de tomada de contas dos bens patrimoniais da Unidade
  * da UFG.
- *
+ * 
  * @author Emerson Jose Porfirio
  */
 public class Inventario implements Serializable {
@@ -41,15 +41,16 @@ public class Inventario implements Serializable {
 	}
 
 	public Inventario(Date dataEmissao, Gestor gestor,
-		List<BemPatrimonial> bensPatrimoniais) {
+			List<BemPatrimonial> bensPatrimoniais) {
 		setDataEmissao(dataEmissao);
 		setGestor(gestor);
-		this.adicionarAnalisados(bensPatrimoniais);
+		adicionarAnalisados(bensPatrimoniais);
 	}
 
-	private final void adicionarAnalisados(List<BemPatrimonial> bensPatrimoniais) {
+	private void adicionarAnalisados(List<BemPatrimonial> bensPatrimoniais) {
 		if (bensPatrimoniais == null || bensPatrimoniais.isEmpty()) {
-			throw new IllegalArgumentException("A lista de bens analisados deve ter ao menos um elemento.");
+			throw new IllegalArgumentException(
+					"A lista de bens analisados deve ter ao menos um elemento.");
 		}
 		for (BemPatrimonial bem : bensPatrimoniais) {
 			this.adicionarAnalisado(bem);
@@ -77,18 +78,19 @@ public class Inventario implements Serializable {
 		this.gestor = gestor;
 	}
 
-	private void setDataEmissao(Date dataEmissao) throws IllegalArgumentException {
+	private void setDataEmissao(Date dataEmissao) {
 		if (dataEmissao == null) {
 			throw new IllegalArgumentException("A data de "
-				+ "emissão não pode ser nula");
+					+ "emissão não pode ser nula");
 		}
 		this.dataEmissao = dataEmissao;
 	}
 
-	public void setDataFechamento(Date dataFechamento) throws IllegalArgumentException {
+	public void setDataFechamento(Date dataFechamento) {
 		if (dataFechamento != null && dataFechamento.before(dataEmissao)) {
-			throw new IllegalArgumentException("A data fechamento não pode ser "
-				+ "nula ou anterior à data inicial");
+			throw new IllegalArgumentException(
+					"A data fechamento não pode ser "
+							+ "nula ou anterior à data inicial");
 		}
 		this.dataFechamento = dataFechamento;
 	}

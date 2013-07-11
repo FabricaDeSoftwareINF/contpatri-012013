@@ -72,7 +72,7 @@ public class Analise implements Serializable {
 		return bemPatrimonial;
 	}
 
-	private void setBemPatrimonial(BemPatrimonial bemPatrimonial) throws IllegalArgumentException {
+	private void setBemPatrimonial(BemPatrimonial bemPatrimonial) {
 		if (bemPatrimonial == null) {
 			throw new IllegalArgumentException("O bem não pode ser nulo");
 		}
@@ -83,7 +83,7 @@ public class Analise implements Serializable {
 		return inventario;
 	}
 
-	private void setInventario(Inventario inventario) throws IllegalArgumentException {
+	private void setInventario(Inventario inventario) {
 		if (inventario == null) {
 			throw new IllegalArgumentException("O inventário não pode ser nulo");
 		}
@@ -94,7 +94,7 @@ public class Analise implements Serializable {
 		return situacao;
 	}
 
-	private void setSituacao(TipoSituacaoAnalise situacao) throws IllegalArgumentException {
+	private void setSituacao(TipoSituacaoAnalise situacao) {
 		this.situacao = situacao;
 	}
 
@@ -118,8 +118,9 @@ public class Analise implements Serializable {
 
 	@Override
 	public int hashCode() {
+		final int valorIncremental = 31;
 		int result = bemPatrimonial != null ? bemPatrimonial.hashCode() : 0;
-		result = 31 * result + (inventario != null ? inventario.hashCode() : 0);
+		result = valorIncremental * result + (inventario != null ? inventario.hashCode() : 0);
 		return result;
 	}
 }

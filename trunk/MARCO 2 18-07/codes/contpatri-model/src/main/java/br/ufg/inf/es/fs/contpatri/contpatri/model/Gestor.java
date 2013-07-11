@@ -79,7 +79,9 @@ public class Gestor implements Serializable, Cloneable {
 	}
 
 	private void setNome(String nome) {
-		if (nome == null || nome.trim().length() == 0 || nome.length() > 60) {
+		final int limiteNome = 60;
+		if (nome == null || nome.trim().length() == 0
+				|| nome.length() > limiteNome) {
 			throw new IllegalArgumentException(String.format(
 					"Valor inválido para o atributo nome: '%s'", nome));
 		}
@@ -122,13 +124,17 @@ public class Gestor implements Serializable, Cloneable {
 	}
 
 	public int hashCode() {
-		int hash = 1;
-		hash = hash * 31 + (nome.isEmpty() ? 0 : nome.hashCode());
-		hash = hash * 31 + (matricula.isEmpty() ? 0 : matricula.hashCode());
+		final int valorInicial = 1;
+		final int valorIncremental = 31;
+
+		int hash = valorInicial;
+		hash = hash * valorIncremental + (nome.isEmpty() ? 0 : nome.hashCode());
+		hash = hash * valorIncremental
+				+ (matricula.isEmpty() ? 0 : matricula.hashCode());
 		return hash;
 	}
 
 	public Gestor clone() throws CloneNotSupportedException {
-		return(Gestor) super.clone();
+		return (Gestor) super.clone();
 	}
 }

@@ -80,8 +80,7 @@ public class BemPatrimonial implements Serializable, Cloneable {
 		return descricao;
 	}
 
-	public final void setDescricao(String descricaoBreve)
-			throws IllegalArgumentException {
+	public final void setDescricao(String descricaoBreve) {
 		if (descricaoBreve == null || descricaoBreve.trim().isEmpty()) {
 			throw new IllegalArgumentException(
 					"A descrição não pode ser nula ou vazia");
@@ -93,7 +92,7 @@ public class BemPatrimonial implements Serializable, Cloneable {
 		return origem.clone();
 	}
 
-	public final void setOrigem(Origem origem) throws IllegalArgumentException {
+	public final void setOrigem(Origem origem) {
 		if (origem == null) {
 			throw new IllegalArgumentException("A origem não pode ser nula");
 		}
@@ -138,8 +137,11 @@ public class BemPatrimonial implements Serializable, Cloneable {
 
 	@Override
 	public int hashCode() {
-		int hash = 5;
-		hash = 15 * hash + (getId() != null ? getId().hashCode() : 0);
+		final int valorInicial = 5;
+		final int valorIncremental = 15;
+		int hash = valorInicial;
+		hash = valorIncremental * hash
+				+ (getId() != null ? getId().hashCode() : 0);
 		return hash;
 	}
 
