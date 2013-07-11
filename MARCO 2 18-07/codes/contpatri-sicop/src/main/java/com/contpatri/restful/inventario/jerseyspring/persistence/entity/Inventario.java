@@ -41,7 +41,7 @@ public class Inventario implements Serializable {
 	private static final long serialVersionUID = -1058743390684974211L;
 	// --------------------------------------------------------------------------
 
-	private static final int limite = 250;
+	private static final int LIMITE = 250;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
