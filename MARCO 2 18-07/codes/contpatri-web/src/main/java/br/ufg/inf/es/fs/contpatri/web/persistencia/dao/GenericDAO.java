@@ -30,19 +30,19 @@ import org.hibernate.Query;
 
 interface GenericDAO<T, ID extends Serializable> {
 
-    public void create(T entity);
+    void create(T entity);
     
-    public void update(T entity);
+    void update(T entity);
 
-    public void merge(T entity);
+    void merge(T entity);
 
-    public void delete(T entity);
+    void delete(T entity);
 
-    public List<T> findMany(Query query);
+    List<T> findMany(Query query);
 
-    public T findOne(Query query);
+    T findOne(Query query);
 
-    public List findAll(Class clazz);
+    List findAll(Class clazz);
 
-    public T findByID(Class clazz, int id);
+    T findByID(Class clazz, int id);
 }

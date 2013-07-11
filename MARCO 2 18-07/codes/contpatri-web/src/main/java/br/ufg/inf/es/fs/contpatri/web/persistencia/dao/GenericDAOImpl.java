@@ -30,72 +30,72 @@ import org.hibernate.Session;
  * 
  * @author Guilherme de Paula <guilherme.p.pereira at gmail.com>
  */
-abstract class GenericDAOImpl<T, ID extends Serializable> implements GenericDAO<T, ID> {
+abstract class GenericDAOImpl<T, ID extends Serializable> implements
+		GenericDAO<T, ID> {
 
-    protected Session getSession() {
-        return HibernateUtil.getSession();
-    }
+	protected Session getSession() {
+		return HibernateUtil.getSession();
+	}
 
-    @Override
-    public void create(T entity) {
-        Session hibernateSession = this.getSession();
-        hibernateSession.save(entity);
-    }
-    
-    @Override
-    public void update(T entity) {
-        Session hibernateSession = this.getSession();
-        hibernateSession.update(entity);
-    }
+	@Override
+	public void create(T entity) {
+		Session hibernateSession = this.getSession();
+		hibernateSession.save(entity);
+	}
 
-    @Override
-    public void merge(T entity) {
-        Session hibernateSession = this.getSession();
-        hibernateSession.merge(entity);
-    }
+	@Override
+	public void update(T entity) {
+		Session hibernateSession = this.getSession();
+		hibernateSession.update(entity);
+	}
 
-    @Override
-    public void delete(T entity) {
-        Session hibernateSession = this.getSession();
-        hibernateSession.delete(entity);
-    }
+	@Override
+	public void merge(T entity) {
+		Session hibernateSession = this.getSession();
+		hibernateSession.merge(entity);
+	}
 
-    @Override
-    public List<T> findMany(Query query) {
-        List<T> t;
-        t = (List<T>) query.list();
-        return t;
-    }
+	@Override
+	public void delete(T entity) {
+		Session hibernateSession = this.getSession();
+		hibernateSession.delete(entity);
+	}
 
-    @Override
-    public T findOne(Query query) {
-        T t;
-        t = (T) query.uniqueResult();
-        return t;
-    }
+	@Override
+	public List<T> findMany(Query query) {
+		List<T> t;
+		t = (List<T>) query.list();
+		return t;
+	}
 
-    public int rowCount(Class clazz){
-        Session hibernateSession = this.getSession();
-        Query query = hibernateSession.createQuery("select count (*) from " + clazz.getName());
-        int total = ((Long) query.list().get(0)).intValue();
-        return total;
-    }
-    
-    
-    @Override
-    public T findByID(Class clazz, int id) {
-        Session hibernateSession = this.getSession();
-        T t = null;
-        t = (T) hibernateSession.get(clazz, id);
-        return t;
-    }
+	@Override
+	public T findOne(Query query) {
+		T t;
+		t = (T) query.uniqueResult();
+		return t;
+	}
 
-    @Override
-    public List findAll(Class clazz) {
-        Session hibernateSession = this.getSession();
-        List T = null;
-        Query query = hibernateSession.createQuery("from " + clazz.getName());
-        T = query.list();
-        return T;
-    }
+	public int rowCount(Class clazz) {
+		Session hibernateSession = this.getSession();
+		Query query = hibernateSession.createQuery("select count (*) from "
+				+ clazz.getName());
+		return ((Long) query.list().get(0)).intValue();
+	}
+
+	@Override
+	public T findByID(Class clazz, int id) {
+		Session hibernateSession = this.getSession();
+		T t = null;
+		t = (T) hibernateSession.get(clazz, id);
+		return t;
+	}
+
+	@Override
+	public List findAll(Class clazz) {
+		Session hibernateSession = this.getSession();
+		List T = null;
+		Query query = hibernateSession.createQuery("from " + clazz.getName());
+		T = query.list();
+		return T;
+	}
 }
