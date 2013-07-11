@@ -24,7 +24,7 @@ import java.util.Date;
 
 /**
  * Ativo fixo sobre o qual se deseja ou se necessita manter controle patrimonial
- *
+ * 
  * @author Emerson Jose Porfirio
  */
 public class BemPatrimonial implements Serializable, Cloneable {
@@ -80,14 +80,16 @@ public class BemPatrimonial implements Serializable, Cloneable {
 		return descricao;
 	}
 
-	public void setDescricao(String descricaoBreve) throws IllegalArgumentException {
+	public void setDescricao(String descricaoBreve)
+			throws IllegalArgumentException {
 		if (descricaoBreve == null || descricaoBreve.trim().isEmpty()) {
-			throw new IllegalArgumentException("A descrição não pode ser nula ou vazia");
+			throw new IllegalArgumentException(
+					"A descrição não pode ser nula ou vazia");
 		}
 		this.descricao = descricaoBreve;
 	}
 
-	public Origem getOrigem() {
+	public Origem getOrigem() throws CloneNotSupportedException {
 		return origem.clone();
 	}
 
@@ -98,7 +100,7 @@ public class BemPatrimonial implements Serializable, Cloneable {
 		this.origem = origem;
 	}
 
-	public Gestor getGestor() {
+	public Gestor getGestor() throws CloneNotSupportedException {
 		return gestor.clone();
 	}
 
@@ -114,7 +116,7 @@ public class BemPatrimonial implements Serializable, Cloneable {
 		this.agente = agente;
 	}
 
-	public SubLocal getSubLocal() {
+	public SubLocal getSubLocal() throws CloneNotSupportedException {
 		return subLocal.clone();
 	}
 
@@ -128,23 +130,26 @@ public class BemPatrimonial implements Serializable, Cloneable {
 		}
 		BemPatrimonial outroBem = (BemPatrimonial) obj;
 		if (this.descricao.equals(outroBem.descricao)
-			&& this.origem.equals(outroBem.origem)) {
+				&& this.origem.equals(outroBem.origem)) {
 			return true;
-		} else {
-			return false;
 		}
+		return false;
 	}
 
 	@Override
-	public final BemPatrimonial clone() {
-		try {
-			BemPatrimonial clone = (BemPatrimonial) super.clone();
-			clone.setGestor(this.gestor == null ? null : this.gestor.clone());
-			clone.setTombamento(this.tombamento == null ? null : this.tombamento.clone());
-			clone.setSubLocal(this.subLocal == null ? null : this.subLocal.clone());
-			return clone;
-		} catch (CloneNotSupportedException e) {
-			throw new Error("CloneNotSupported");
-		}
+	public int hashCode() {
+		int hash = 5;
+		hash = 15 * hash + (getId() != null ? getId().hashCode() : 0);
+		return hash;
+	}
+
+	@Override
+	public final BemPatrimonial clone() throws CloneNotSupportedException {
+		BemPatrimonial clone = (BemPatrimonial) super.clone();
+		clone.setGestor(this.gestor == null ? null : this.gestor.clone());
+		clone.setTombamento(this.tombamento == null ? null : this.tombamento
+				.clone());
+		clone.setSubLocal(this.subLocal == null ? null : this.subLocal.clone());
+		return clone;
 	}
 }

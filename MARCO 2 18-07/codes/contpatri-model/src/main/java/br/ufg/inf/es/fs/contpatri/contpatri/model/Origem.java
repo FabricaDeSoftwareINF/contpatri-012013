@@ -25,7 +25,7 @@ import java.io.Serializable;
  * Fonte financeira ou beneficente de aquisição de um bem permanente. Um bem
  * pode ser adquirido com recursos próprios da UFG, doado ou transferido.
  * Exemplos: UFG, FUNDEP, CNPQ, Doação.
- *
+ * 
  * @author Emerson Jose Porfirio
  */
 public class Origem implements Serializable, Cloneable {
@@ -60,16 +60,18 @@ public class Origem implements Serializable, Cloneable {
 	}
 
 	private void setResumo(String resumo) {
-		if (resumo == null || resumo.trim().length() == 0 || resumo.length() > 40) {
-			throw new IllegalArgumentException(String.format("Valor inválido para o atributo resumo: '%s'.", resumo));
+		if (resumo == null || resumo.trim().length() == 0
+				|| resumo.length() > 40) {
+			throw new IllegalArgumentException(String.format(
+					"Valor inválido para o atributo resumo: '%s'.", resumo));
 		}
 		this.resumo = resumo;
 	}
 
 	/**
-	 * Texto detalhado em Observações que relata detalhes sobre a origem de
-	 * um bem permanente.
-	 *
+	 * Texto detalhado em Observações que relata detalhes sobre a origem de um
+	 * bem permanente.
+	 * 
 	 * @return
 	 */
 	public String getDetalhe() {
@@ -103,11 +105,7 @@ public class Origem implements Serializable, Cloneable {
 	}
 
 	@Override
-	public Origem clone() {
-		try {
-			return (Origem) super.clone();
-		} catch (CloneNotSupportedException e) {
-			throw new Error("CloneNotSupported");
-		}
+	public Origem clone() throws CloneNotSupportedException {
+		return (Origem) super.clone();
 	}
 }

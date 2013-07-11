@@ -24,7 +24,7 @@ import java.io.Serializable;
 /**
  * Espaço físico onde um ou mais bens permanentes são usualmente dispostos, seja
  * para uso ou para estocagem. Exemplo: Laboratório, Sala de Aulas, etc.
- *
+ * 
  * @author Emerson Jose Porfirio
  */
 @SuppressWarnings("serial")
@@ -50,7 +50,8 @@ public class SubLocal implements Serializable, Cloneable {
 
 	private void setNome(String nome) {
 		if (nome == null || nome.trim().equals("")) {
-			throw new IllegalArgumentException("Campo nome não pode ser nulo ou vazio.");
+			throw new IllegalArgumentException(
+					"Campo nome não pode ser nulo ou vazio.");
 		}
 		this.nome = nome;
 	}
@@ -60,12 +61,8 @@ public class SubLocal implements Serializable, Cloneable {
 	}
 
 	@Override
-	public SubLocal clone() {
-		try {
-			return (SubLocal) super.clone();
-		} catch (CloneNotSupportedException e) {
-			throw new Error("CloneNotSupported");
-		}
+	public SubLocal clone() throws CloneNotSupportedException {
+		return (SubLocal) super.clone();
 	}
 
 	@Override
@@ -81,5 +78,12 @@ public class SubLocal implements Serializable, Cloneable {
 		}
 		SubLocal outro = (SubLocal) obj;
 		return this.nome.equals(outro.nome);
+	}
+
+	@Override
+	public int hashCode() {
+		int hash = 7;
+		hash = 23 * hash + (getId() != null ? getId().hashCode() : 0);
+		return hash;
 	}
 }
