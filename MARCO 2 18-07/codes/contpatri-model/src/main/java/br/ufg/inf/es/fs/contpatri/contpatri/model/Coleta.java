@@ -96,8 +96,7 @@ public class Coleta implements Serializable {
 		return situacao;
 	}
 
-	public final void setSituacao(TipoSituacaoColeta situacao)
-			throws IllegalArgumentException {
+	public final void setSituacao(TipoSituacaoColeta situacao) {
 		this.situacao = situacao;
 	}
 
@@ -123,7 +122,8 @@ public class Coleta implements Serializable {
 	public int hashCode() {
 		final int valorIncremental = 31;
 		int result = bemPatrimonial != null ? bemPatrimonial.hashCode() : 0;
-		result = valorIncremental * result + (inventario != null ? inventario.hashCode() : 0);
+		result = valorIncremental * result
+				+ (inventario != null ? inventario.hashCode() : 0);
 		return result;
 	}
 

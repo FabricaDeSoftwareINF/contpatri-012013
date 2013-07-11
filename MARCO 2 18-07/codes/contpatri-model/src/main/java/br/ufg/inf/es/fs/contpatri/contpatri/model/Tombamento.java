@@ -47,7 +47,7 @@ public class Tombamento implements Serializable, Cloneable {
 	}
 
 	public Tombamento(String codTombamento, Date dataTombamento,
-			TipoTombamento tipoTombamento) throws IllegalArgumentException {
+			TipoTombamento tipoTombamento) {
 		setCodTombamento(codTombamento);
 		setDataTombamento(dataTombamento);
 		setTipoTombamento(tipoTombamento);
@@ -126,9 +126,10 @@ public class Tombamento implements Serializable, Cloneable {
 	public int hashCode() {
 		final int valorInicial = 7;
 		final int valorIncremental = 89;
-		
+
 		int hash = valorInicial;
-		hash = valorIncremental * hash + (this.id != null ? this.id.hashCode() : 0);
+		hash = valorIncremental * hash
+				+ (this.id != null ? this.id.hashCode() : 0);
 		hash = valorIncremental
 				* hash
 				+ (this.codTombamento != null ? this.codTombamento.hashCode()
