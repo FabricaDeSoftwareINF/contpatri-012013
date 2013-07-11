@@ -60,7 +60,8 @@ public class InventarioDAO extends HibernateDaoSupport implements IInventarioDAO
 	public void generateInitData() {
 
 		List<Inventario> list = this.listAll();
-
+		final String enderecoUrl = "https://sicop.com/Inventarios_INF";
+		
 		if (list.size() == 0) {
 			log.debug("generateInitData");
 			
@@ -70,25 +71,25 @@ public class InventarioDAO extends HibernateDaoSupport implements IInventarioDAO
 			vo = new Inventario();
 			vo.setName("INVENTARIO INF 2013");
 			vo.setDescription("inventarios/inf/2013");
-			vo.setUrl("https://sicop.com/Inventarios_INF");
+			vo.setUrl(enderecoUrl);
 			this.save(vo);
 
 			vo = new Inventario();
 			vo.setName("INVENTARIO INF 2012");
 			vo.setDescription("inventarios/inf/2012");
-			vo.setUrl("https://sicop.com/Inventarios_INF");
+			vo.setUrl(enderecoUrl);
 			this.save(vo);
 
 			vo = new Inventario();
 			vo.setName("INVENTARIO INF 2011");
 			vo.setDescription("inventarios/inf/2011");
-			vo.setUrl("https://sicop.com/Inventarios_INF");
+			vo.setUrl(enderecoUrl);
 			this.save(vo);
 
 			vo = new Inventario();
 			vo.setName("INVENTARIO INF 2010");
 			vo.setDescription("inventarios/inf/2010");
-			vo.setUrl("https://sicop.com/Inventarios_INF");
+			vo.setUrl(enderecoUrl);
 			this.save(vo);
 
 			vo = null;
