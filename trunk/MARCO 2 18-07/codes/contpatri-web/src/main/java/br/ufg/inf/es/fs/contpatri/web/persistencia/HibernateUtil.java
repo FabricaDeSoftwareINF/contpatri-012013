@@ -37,7 +37,7 @@ public class HibernateUtil {
 		try {
 			// Create the SessionFactory from standard (hibernate.cfg.xml)
 			// config file.
-			sessionFactory = new AnnotationConfiguration().configure()
+			SESSION_FACTORY = new AnnotationConfiguration().configure()
 					.buildSessionFactory();
 		} catch (Throwable ex) {
 			// Log the exception.
@@ -47,7 +47,7 @@ public class HibernateUtil {
 	}
 
 	public static SessionFactory getSessionFactory() {
-		return sessionFactory;
+		return SESSION_FACTORY;
 	}
 
 	public static Session beginTransaction() {
