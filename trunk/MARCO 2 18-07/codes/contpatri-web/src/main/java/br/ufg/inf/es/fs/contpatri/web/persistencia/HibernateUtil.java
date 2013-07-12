@@ -14,7 +14,7 @@
  * Voce pode obter uma copia da licenca em http://www.gnu.org/licenses/gpl.html
  *
  * A menos que especificado ou exigido por legislacao local, o software e
- * fornecido "da maneira que esta", sem garantias ou condicµes de qualquer tipo,
+ * fornecido "da maneira que esta", sem garantias ou condicoes de qualquer tipo,
  * nem expressas nem implicitas. Em caso de d√∫vidas referir a licenca GNU-GPL.
  */
 package br.ufg.inf.es.fs.contpatri.web.persistencia;
