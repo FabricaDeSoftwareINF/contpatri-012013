@@ -96,6 +96,6 @@ abstract class GenericDAOImpl<T, ID extends Serializable> implements
 		List t = null;
 		Query query = hibernateSession.createQuery("from " + clazz.getName());
 		t = query.list();
-		return T;
+		return t;
 	}
 }
