@@ -69,6 +69,6 @@ public class HibernateUtil {
 	}
 
 	public static Session getSession() {
-		return sessionFactory.getCurrentSession();
+		return SESSION_FACTORY.getCurrentSession();
 	}
 }
