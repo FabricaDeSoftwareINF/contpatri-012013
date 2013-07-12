@@ -48,13 +48,13 @@ public class Inventario implements Serializable {
 	@Column
 	private Long id;
 
-	@Column(nullable = false, length = limite)
+	@Column(nullable = false, length = LIMITE)
 	private String name;
 
 	@Column
 	private String description;
 
-	@Column(nullable = false, length = limite)
+	@Column(nullable = false, length = LIMITE)
 	private String url;
 
 	// --------------------------------------------------------------------------
