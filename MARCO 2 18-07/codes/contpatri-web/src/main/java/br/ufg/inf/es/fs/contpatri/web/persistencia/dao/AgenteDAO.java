@@ -19,30 +19,13 @@
  */
 package br.ufg.inf.es.fs.contpatri.web.persistencia.dao;
 
+import br.ufg.inf.es.fs.contpatri.model.Agente;
+import java.io.Serializable;
+
 /**
- * Interface DAO genérica.
- * 
- * @author Guilherme de Paula <guilherme.p.pereira at gmail.com>
+ *
+ * @author Guilherme de Paula
  */
-import java.io.*;
-import java.util.*;
-import org.hibernate.Query;
-
-interface GenericDAO<T, ID extends Serializable> {
-
-    void create(T entity);
+public class AgenteDAO extends GenericDAOImpl<Agente, Long> implements Serializable{
     
-    void update(T entity);
-
-    void merge(T entity);
-
-    void delete(T entity);
-
-    List<T> findMany(Query query);
-
-    T findOne(Query query);
-
-    List findAll(Class clazz);
-
-    T findByID(Class clazz, ID id);
 }

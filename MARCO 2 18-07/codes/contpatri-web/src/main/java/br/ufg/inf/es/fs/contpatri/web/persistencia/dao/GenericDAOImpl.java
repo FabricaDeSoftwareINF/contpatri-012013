@@ -22,80 +22,113 @@ package br.ufg.inf.es.fs.contpatri.web.persistencia.dao;
 import br.ufg.inf.es.fs.contpatri.web.persistencia.HibernateUtil;
 import java.io.Serializable;
 import java.util.List;
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
 /**
  * Implementação genérica de operações de persistência no Hibernate.
- * 
+ *
  * @author Guilherme de Paula <guilherme.p.pereira at gmail.com>
  */
 abstract class GenericDAOImpl<T, ID extends Serializable> implements
-		GenericDAO<T, ID> {
+        GenericDAO<T, ID> {
 
-	protected Session getSession() {
-		return HibernateUtil.getSession();
-	}
+    protected Session getSession() {
+        return HibernateUtil.getSession();
+    }
 
-	@Override
-	public void create(T entity) {
-		Session hibernateSession = this.getSession();
-		hibernateSession.save(entity);
-	}
+    @Override
+    public void create(T entity) {
+        try {
+            HibernateUtil.beginTransaction();
+            Session hibernateSession = this.getSession();
+            hibernateSession.save(entity);
+            HibernateUtil.commitTransaction();
+        } catch (HibernateException e) {
+            HibernateUtil.rollbackTransaction();
+            throw e;
+        }
+    }
 
-	@Override
-	public void update(T entity) {
-		Session hibernateSession = this.getSession();
-		hibernateSession.update(entity);
-	}
+    @Override
+    public void update(T entity) {
+        try {
+            HibernateUtil.beginTransaction();
+            Session hibernateSession = this.getSession();
+            hibernateSession.update(entity);
+            HibernateUtil.commitTransaction();
+        } catch (HibernateException e) {
+            HibernateUtil.rollbackTransaction();
+            throw e;
+        }
+    }
 
-	@Override
-	public void merge(T entity) {
-		Session hibernateSession = this.getSession();
-		hibernateSession.merge(entity);
-	}
+    @Override
+    public void merge(T entity) {
+        try {
+            HibernateUtil.beginTransaction();
+            Session hibernateSession = this.getSession();
+            hibernateSession.merge(entity);
+            HibernateUtil.commitTransaction();
+        } catch (HibernateException e) {
+            HibernateUtil.rollbackTransaction();
+            throw e;
+        }
+    }
 
-	@Override
-	public void delete(T entity) {
-		Session hibernateSession = this.getSession();
-		hibernateSession.delete(entity);
-	}
+    @Override
+    public void delete(T entity) {
+        try {
+            HibernateUtil.beginTransaction();
+            Session hibernateSession = this.getSession();
+            hibernateSession.delete(entity);
+            HibernateUtil.commitTransaction();
+        } catch (HibernateException e) {
+            HibernateUtil.rollbackTransaction();
+            throw e;
+        }
+    }
 
-	@Override
-	public List<T> findMany(Query query) {
-		List<T> t;
-		t = (List<T>) query.list();
-		return t;
-	}
+    @Override
+    public T findOne(Query query) {
+        T t;
+        t = (T) query.uniqueResult();
+        return t;
+    }
 
-	@Override
-	public T findOne(Query query) {
-		T t;
-		t = (T) query.uniqueResult();
-		return t;
-	}
+    @Override
+    public List<T> findMany(Query query) {
+        List<T> t;
+        t = (List<T>) query.list();
+        return t;
+    }
 
-	public int rowCount(Class clazz) {
-		Session hibernateSession = this.getSession();
-		Query query = hibernateSession.createQuery("select count (*) from "
-				+ clazz.getName());
-		return ((Long) query.list().get(0)).intValue();
-	}
+    public int rowCount(Class clazz) {
+        Session hibernateSession = this.getSession();
+        Query query = hibernateSession.createQuery("select count (*) from " + clazz.getName());
+        int total = ((Long) query.list().get(0)).intValue();
+        return total;
+    }
 
-	@Override
-	public T findByID(Class clazz, int id) {
-		Session hibernateSession = this.getSession();
-		T t = null;
-		t = (T) hibernateSession.get(clazz, id);
-		return t;
-	}
+    @Override
+    public T findByID(Class clazz, ID id) {
+        HibernateUtil.beginTransaction();
+        Session hibernateSession = this.getSession();
+        T t = null;
+        t = (T) hibernateSession.get(clazz, id);
+        HibernateUtil.commitTransaction();
+        return t;
+    }
 
-	@Override
-	public List findAll(Class clazz) {
-		Session hibernateSession = this.getSession();
-		List t = null;
-		Query query = hibernateSession.createQuery("from " + clazz.getName());
-		t = query.list();
-		return t;
-	}
+    @Override
+    public List findAll(Class clazz) {
+        HibernateUtil.beginTransaction();
+        Session hibernateSession = this.getSession();
+        List T = null;
+        Query query = hibernateSession.createQuery("from " + clazz.getName());
+        T = query.list();
+        HibernateUtil.commitTransaction();
+        return T;
+    }
 }
