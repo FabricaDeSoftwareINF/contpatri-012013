@@ -91,7 +91,7 @@ public class Inventario implements Serializable {
 	 * @param bensPatrimoniais
 	 *            Bens patrimoniais
 	 */
-	private final void adicionarAnalisados(List<BemPatrimonial> bensPatrimoniais) {
+	private void adicionarAnalisados(List<BemPatrimonial> bensPatrimoniais) {
 		if (bensPatrimoniais == null || bensPatrimoniais.isEmpty()) {
 			throw new IllegalArgumentException(
 					"A lista de bens analisados deve ter ao menos um elemento.");
