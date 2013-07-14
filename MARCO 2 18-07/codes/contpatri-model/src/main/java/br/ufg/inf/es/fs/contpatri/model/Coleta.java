@@ -20,7 +20,7 @@
  * tipo, nem expressas nem implícitas. Em caso de dúvidas referir a licença GNU-GPL.
  */
 
-package br.ufg.inf.es.fs.contpatri.contpatri.model;
+package br.ufg.inf.es.fs.contpatri.model;
 
 import java.io.Serializable;
 

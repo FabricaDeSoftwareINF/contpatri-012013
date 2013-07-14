@@ -17,39 +17,17 @@
  * fornecido "da maneira que está", sem garantias ou condições de qualquer tipo,
  * nem expressas nem implícitas. Em caso de dúvidas referir a licença GNU-GPL.
  */
-package br.ufg.inf.es.fs.contpatri.contpatri.model;
-
-import org.junit.Test;
-
-import br.ufg.inf.es.fs.contpatri.model.SubLocal;
-
-import static junit.framework.Assert.assertEquals;
+package br.ufg.inf.es.fs.contpatri.model;
 
 /**
- * Testes unitários da respectiva classe de domínio
- *
- * @author Emerson Jose Porfirio
+ * Tipos de situações ocorridas na coleta de um bem patrimonial: 
+ * LOCALIZADO - bem encontrado no SubLocal estabelecido no Inventario 
+ * REALOCADO - bem encontrado em SubLocal que não o estabelecido no Inventario 
+ * EXTRAVIADO - bem não encontrado em SubLocal estabelecido no Inventario
  */
-public class SubLocalTest {
+public enum TipoSituacaoColeta {
 
-	@Test
-	public void testarLocalValido() {
-		SubLocal local = new SubLocal("Direção");
-		assertEquals("Direção", local.getNome());
-	}
-
-	@Test(expected = IllegalArgumentException.class)
-	public void testarLocalInvalido1() {
-		new SubLocal(null);
-	}
-
-	@Test(expected = IllegalArgumentException.class)
-	public void testarLocalInvalido2() {
-		new SubLocal("");
-	}
-
-	@Test(expected = IllegalArgumentException.class)
-	public void testarLocalInvalido3() {
-		new SubLocal(" ");
-	}
+    LOCALIZADO,
+    REALOCADO,
+    EXTRAVIADO;
 }

@@ -17,63 +17,50 @@
  * fornecido "da maneira que está", sem garantias ou condições de qualquer tipo,
  * nem expressas nem implícitas. Em caso de dúvidas referir a licença GNU-GPL.
  */
-package br.ufg.inf.es.fs.contpatri.contpatri.model;
+package br.ufg.inf.es.fs.contpatri.model;
 
 import java.io.Serializable;
 
 /**
- * Identifica o Agente Patrimonial responsável pelas coletas de bens
+ * Identifica o Gestor de Patrimônio responsável pela gestão dos bens
  * patrimoniais da Unidade da UFG.
- *  
+ * 
  * @author Emerson Jose Porfirio
  */
-public class Agente extends Pessoa implements Serializable, Cloneable {
+public class Gestor extends Pessoa implements Serializable, Cloneable {
 
 	private static final long serialVersionUID = -3415217048887883532L;
 
-	/**
-	 * Construtor do agente
-	 */
-	public Agente() {
+	public Gestor() {
 	}
 
-	/**
-	 * Construtor da classe Agente
-	 * 
-	 * @param nome Nome do agente
-	 * 
-	 * @param matricula Matricula do agente
-	 * 
-	 * @param email Email do agente
-	 */
-	public Agente(String nome, String matricula, String email) {
+	public Gestor(String nome, String matricula, String email) {
 		setNome(nome);
 		setMatricula(matricula);
 		setEmail(email);
 	}
 
 	/**
-	 * Comparacao de agentes
+	 * Compara dois gestores
 	 */
 	@Override
 	public boolean equals(Object outro) {
 		if (outro == null) {
 			return false;
 		}
-		if (!(outro instanceof Agente)) {
+		if (!(outro instanceof Gestor)) {
 			return false;
 		}
 		if (this == outro) {
 			return true;
 		}
-		Agente outroAgente = (Agente) outro;
-		return !((this.getMatricula().compareTo(outroAgente.getMatricula()) != 0)
-				|| (this.getNome()
-				.compareTo(outroAgente.getNome()) != 0));
+		Gestor outroGestor = (Gestor) outro;
+		return !((this.getMatricula().compareTo(outroGestor.getMatricula()) != 0) || (this
+				.getNome().compareTo(outroGestor.getNome()) != 0));
 	}
 
 	/**
-	 * HashCode do agente
+	 * HashCode de um Gestor
 	 */
 	public int hashCode() {
 		final int valorInicial = 1;
@@ -87,9 +74,9 @@ public class Agente extends Pessoa implements Serializable, Cloneable {
 	}
 
 	/**
-	 * Clona um agente
+	 * Clona um gestor
 	 */
-	public Agente clone() throws CloneNotSupportedException {
-		return (Agente) super.clone();
+	public Gestor clone() throws CloneNotSupportedException {
+		return (Gestor) super.clone();
 	}
 }

@@ -1,4 +1,4 @@
-package br.ufg.inf.es.fs.contpatri.contpatri.model;
+package br.ufg.inf.es.fs.contpatri.model;
 
 /**
  * Classe da pessoa

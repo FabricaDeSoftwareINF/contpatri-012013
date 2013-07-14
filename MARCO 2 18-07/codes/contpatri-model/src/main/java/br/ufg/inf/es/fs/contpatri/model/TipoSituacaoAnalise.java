@@ -17,7 +17,7 @@
  * fornecido "da maneira que está", sem garantias ou condições de qualquer tipo,
  * nem expressas nem implícitas. Em caso de dúvidas referir a licença GNU-GPL.
  */
-package br.ufg.inf.es.fs.contpatri.contpatri.model;
+package br.ufg.inf.es.fs.contpatri.model;
 
 /**
  * Tipos de situações ocorridas na coleta de um bem patrimonial: LOCALIZADO -
