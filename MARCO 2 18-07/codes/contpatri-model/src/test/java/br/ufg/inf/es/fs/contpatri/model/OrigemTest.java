@@ -21,6 +21,8 @@ package br.ufg.inf.es.fs.contpatri.contpatri.model;
 
 import org.junit.Test;
 
+import br.ufg.inf.es.fs.contpatri.model.Origem;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 

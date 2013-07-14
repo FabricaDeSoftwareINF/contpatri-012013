@@ -23,6 +23,13 @@ import org.apache.commons.lang3.time.DateUtils;
 import org.junit.Before;
 import org.junit.Test;
 
+import br.ufg.inf.es.fs.contpatri.model.Analise;
+import br.ufg.inf.es.fs.contpatri.model.BemPatrimonial;
+import br.ufg.inf.es.fs.contpatri.model.Gestor;
+import br.ufg.inf.es.fs.contpatri.model.Inventario;
+import br.ufg.inf.es.fs.contpatri.model.Origem;
+import br.ufg.inf.es.fs.contpatri.model.SubLocal;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
