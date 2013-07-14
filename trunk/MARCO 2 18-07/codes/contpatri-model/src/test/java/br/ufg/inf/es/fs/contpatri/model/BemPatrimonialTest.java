@@ -20,6 +20,12 @@
 package br.ufg.inf.es.fs.contpatri.contpatri.model;
 
 import org.junit.Test;
+
+import br.ufg.inf.es.fs.contpatri.model.BemPatrimonial;
+import br.ufg.inf.es.fs.contpatri.model.Gestor;
+import br.ufg.inf.es.fs.contpatri.model.Origem;
+import br.ufg.inf.es.fs.contpatri.model.SubLocal;
+import br.ufg.inf.es.fs.contpatri.model.Tombamento;
 import static junit.framework.Assert.*;
 import static org.mockito.Mockito.mock;
 

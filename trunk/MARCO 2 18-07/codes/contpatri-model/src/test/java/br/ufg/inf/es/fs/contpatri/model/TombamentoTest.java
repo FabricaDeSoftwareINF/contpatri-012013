@@ -21,6 +21,9 @@ package br.ufg.inf.es.fs.contpatri.contpatri.model;
 
 import org.junit.Test;
 
+import br.ufg.inf.es.fs.contpatri.model.TipoTombamento;
+import br.ufg.inf.es.fs.contpatri.model.Tombamento;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
