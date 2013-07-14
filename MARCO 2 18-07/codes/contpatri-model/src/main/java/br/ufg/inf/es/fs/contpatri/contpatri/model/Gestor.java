@@ -27,13 +27,9 @@ import java.io.Serializable;
  * 
  * @author Emerson Jose Porfirio
  */
-public class Gestor implements Serializable, Cloneable {
+public class Gestor extends Pessoa implements Serializable, Cloneable {
 
 	private static final long serialVersionUID = -3415217048887883532L;
-	private Long id;
-	private String nome;
-	private String matricula;
-	private String email;
 
 	public Gestor() {
 	}
@@ -44,69 +40,9 @@ public class Gestor implements Serializable, Cloneable {
 		setEmail(email);
 	}
 
-	private void setEmail(String email) {
-		if (email == null) {
-			throw new IllegalArgumentException(
-					"Campo email deve ser preenchido");
-		}
-		this.email = email;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
 	/**
-	 * Identificador interno para a aplicação
-	 * 
-	 * @return
+	 * Compara dois gestores
 	 */
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	/**
-	 * Nome do Gestor responsável pelos bens patrimoniais da Unidade da UFG
-	 * 
-	 * @return
-	 */
-	public String getNome() {
-		return nome;
-	}
-
-	private void setNome(String nome) {
-		final int limiteNome = 60;
-		if (nome == null || nome.trim().length() == 0
-				|| nome.length() > limiteNome) {
-			throw new IllegalArgumentException(String.format(
-					"Valor inválido para o atributo nome: '%s'", nome));
-		}
-		this.nome = nome;
-	}
-
-	/**
-	 * Identificação funcional do Gestor; número de registro junto ao sistema de
-	 * recursos humanos da UFG.
-	 * 
-	 * @return
-	 */
-	public String getMatricula() {
-		return matricula;
-	}
-
-	private void setMatricula(String matricula) {
-		if (matricula == null || matricula.trim().equals("")) {
-			throw new IllegalArgumentException(
-					"Matricula nao pode ser nula ou vazia");
-		}
-		Long.parseLong(matricula);
-		this.matricula = matricula;
-	}
-
 	@Override
 	public boolean equals(Object outro) {
 		if (outro == null) {
@@ -119,21 +55,27 @@ public class Gestor implements Serializable, Cloneable {
 			return true;
 		}
 		Gestor outroGestor = (Gestor) outro;
-		return !((this.matricula.compareTo(outroGestor.matricula) != 0) || (this.nome
-				.compareTo(outroGestor.nome) != 0));
+		return !((this.getMatricula().compareTo(outroGestor.getMatricula()) != 0) || (this
+				.getNome().compareTo(outroGestor.getNome()) != 0));
 	}
 
+	/**
+	 * HashCode de um Gestor
+	 */
 	public int hashCode() {
 		final int valorInicial = 1;
 		final int valorIncremental = 31;
 
 		int hash = valorInicial;
-		hash = hash * valorIncremental + (nome.isEmpty() ? 0 : nome.hashCode());
+		hash = hash * valorIncremental + (getNome().isEmpty() ? 0 : getNome().hashCode());
 		hash = hash * valorIncremental
-				+ (matricula.isEmpty() ? 0 : matricula.hashCode());
+				+ (getMatricula().isEmpty() ? 0 : getMatricula().hashCode());
 		return hash;
 	}
 
+	/**
+	 * Clona um gestor
+	 */
 	public Gestor clone() throws CloneNotSupportedException {
 		return (Gestor) super.clone();
 	}

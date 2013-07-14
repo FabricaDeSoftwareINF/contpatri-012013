@@ -24,92 +24,37 @@ import java.io.Serializable;
 /**
  * Identifica o Agente Patrimonial responsável pelas coletas de bens
  * patrimoniais da Unidade da UFG.
- * 
- * 
+ *  
  * @author Emerson Jose Porfirio
  */
-
-public class Agente implements Serializable, Cloneable {
+public class Agente extends Pessoa implements Serializable, Cloneable {
 
 	private static final long serialVersionUID = -3415217048887883532L;
-	private Long id;
-	private String nome;
-	private String matricula;
-	private String email;
 
+	/**
+	 * Construtor do agente
+	 */
 	public Agente() {
 	}
 
+	/**
+	 * Construtor da classe Agente
+	 * 
+	 * @param nome Nome do agente
+	 * 
+	 * @param matricula Matricula do agente
+	 * 
+	 * @param email Email do agente
+	 */
 	public Agente(String nome, String matricula, String email) {
 		setNome(nome);
 		setMatricula(matricula);
 		setEmail(email);
 	}
 
-	private void setEmail(String email) {
-		if (email == null) {
-			throw new IllegalArgumentException(
-					"Campo email deve ser preenchido");
-		}
-		this.email = email;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
 	/**
-	 * Identificador interno para a aplicação
-	 * 
-	 * @return
+	 * Comparacao de agentes
 	 */
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	/**
-	 * Nome do Agente responsável pela coleta dos bens patrimoniais da Unidade
-	 * da UFG
-	 * 
-	 * @return
-	 */
-	public String getNome() {
-		return nome;
-	}
-
-	private void setNome(String nome) {
-		final int limiteNome = 60;
-		if (nome == null || nome.trim().length() == 0
-				|| nome.length() > limiteNome) {
-			throw new IllegalArgumentException(String.format(
-					"Valor inválido para o atributo nome: '%s'", nome));
-		}
-		this.nome = nome;
-	}
-
-	/**
-	 * Identificação funcional do Agente; número de registro junto ao sistema de
-	 * recursos humanos da UFG.
-	 * 
-	 * @return
-	 */
-	public String getMatricula() {
-		return matricula;
-	}
-
-	private void setMatricula(String matricula) {
-		if (matricula == null || matricula.trim().equals("")) {
-			throw new IllegalArgumentException(
-					"Matricula nao pode ser nula ou vazia");
-		}
-		Long.parseLong(matricula);
-		this.matricula = matricula;
-	}
-
 	@Override
 	public boolean equals(Object outro) {
 		if (outro == null) {
@@ -122,23 +67,29 @@ public class Agente implements Serializable, Cloneable {
 			return true;
 		}
 		Agente outroAgente = (Agente) outro;
-		return !((this.matricula.compareTo(outroAgente.matricula) != 0) || (this.nome
-				.compareTo(outroAgente.nome) != 0));
+		return !((this.getMatricula().compareTo(outroAgente.getMatricula()) != 0)
+				|| (this.getNome()
+				.compareTo(outroAgente.getNome()) != 0));
 	}
 
+	/**
+	 * HashCode do agente
+	 */
 	public int hashCode() {
 		final int valorInicial = 1;
 		final int valorIncremental = 31;
 
 		int hash = valorInicial;
-		hash = hash * valorIncremental + (nome.isEmpty() ? 0 : nome.hashCode());
+		hash = hash * valorIncremental + (getNome().isEmpty() ? 0 : getNome().hashCode());
 		hash = hash * valorIncremental
-				+ (matricula.isEmpty() ? 0 : matricula.hashCode());
+				+ (getMatricula().isEmpty() ? 0 : getMatricula().hashCode());
 		return hash;
 	}
 
+	/**
+	 * Clona um agente
+	 */
 	public Agente clone() throws CloneNotSupportedException {
 		return (Agente) super.clone();
 	}
-
 }
