@@ -30,16 +30,54 @@ import java.util.*;
  */
 public class Inventario implements Serializable {
 
+	/**
+	 * UID
+	 */
 	private static final long serialVersionUID = 7539830852103276098L;
+
+	/**
+	 * Id do inventario
+	 */
 	private Long id;
+
+	/**
+	 * Data de emissao
+	 */
 	private Date dataEmissao;
+
+	/**
+	 * Data de fechamento
+	 */
 	private Date dataFechamento;
+
+	/**
+	 * Gestor do inventario
+	 */
 	private Gestor gestor;
+
+	/**
+	 * Inventarios analisados
+	 */
 	private Set<Analise> analisados = new HashSet<Analise>();
 
+	/**
+	 * Construtor da classe
+	 */
 	public Inventario() {
 	}
 
+	/**
+	 * Construtor da classe inventario
+	 * 
+	 * @param dataEmissao
+	 *            Data de emissao do inventario
+	 * 
+	 * @param gestor
+	 *            Gestor do inventario
+	 * 
+	 * @param bensPatrimoniais
+	 *            Bens patrimoniais do inventario
+	 */
 	public Inventario(Date dataEmissao, Gestor gestor,
 			List<BemPatrimonial> bensPatrimoniais) {
 		setDataEmissao(dataEmissao);
@@ -47,6 +85,12 @@ public class Inventario implements Serializable {
 		adicionarAnalisados(bensPatrimoniais);
 	}
 
+	/**
+	 * Adiciona os bens analisados
+	 * 
+	 * @param bensPatrimoniais
+	 *            Bens patrimoniais
+	 */
 	private void adicionarAnalisados(List<BemPatrimonial> bensPatrimoniais) {
 		if (bensPatrimoniais == null || bensPatrimoniais.isEmpty()) {
 			throw new IllegalArgumentException(
@@ -57,10 +101,24 @@ public class Inventario implements Serializable {
 		}
 	}
 
+	/**
+	 * Adicionar um bem analisado
+	 * 
+	 * @param bem
+	 *            Bem analisado
+	 */
 	public void adicionarAnalisado(BemPatrimonial bem) {
 		this.analisados.add(new Analise(bem, this, null));
 	}
 
+	/**
+	 * Remove um bem analisado
+	 * 
+	 * @param bem
+	 *            Bem analisado
+	 * 
+	 * @return <true> Bem existente e removido <false> Bem não existe
+	 */
 	public boolean removerAnalisado(BemPatrimonial bem) {
 		for (Analise analisado : this.analisados) {
 			if (analisado.getBemPatrimonial().equals(bem)) {
@@ -71,6 +129,12 @@ public class Inventario implements Serializable {
 		return false;
 	}
 
+	/**
+	 * Define o gestor do inventario
+	 * 
+	 * @param gestor
+	 *            Gestor do inventario
+	 */
 	private void setGestor(Gestor gestor) {
 		if (gestor == null) {
 			throw new IllegalArgumentException("Gestor não pode ser nulo.");
@@ -78,6 +142,12 @@ public class Inventario implements Serializable {
 		this.gestor = gestor;
 	}
 
+	/**
+	 * Define a data de emissao do inventario
+	 * 
+	 * @param dataEmissao
+	 *            Data de emissao do inventario
+	 */
 	private void setDataEmissao(Date dataEmissao) {
 		if (dataEmissao == null) {
 			throw new IllegalArgumentException("A data de "
@@ -86,6 +156,12 @@ public class Inventario implements Serializable {
 		this.dataEmissao = dataEmissao;
 	}
 
+	/**
+	 * Define a data de fechamento
+	 * 
+	 * @param dataFechamento
+	 *            Data de fechamento
+	 */
 	public void setDataFechamento(Date dataFechamento) {
 		if (dataFechamento != null && dataFechamento.before(dataEmissao)) {
 			throw new IllegalArgumentException(
@@ -95,18 +171,39 @@ public class Inventario implements Serializable {
 		this.dataFechamento = dataFechamento;
 	}
 
+	/**
+	 * Obtem a id do inventario
+	 * 
+	 * @return Id do inventario
+	 */
 	public Long getId() {
 		return id;
 	}
 
+	/**
+	 * Define a id do inventario
+	 * 
+	 * @param id
+	 *            Id do inventario
+	 */
 	public void setId(Long id) {
 		this.id = id;
 	}
 
+	/**
+	 * Obtem a data de emissao do inventario
+	 * 
+	 * @return Data de emissao do inventario
+	 */
 	public Date getDataEmissao() {
 		return (Date) this.dataEmissao.clone();
 	}
 
+	/**
+	 * Obtem a data de fechamento
+	 * 
+	 * @return Data de fechamento do inventario
+	 */
 	public Date getDataFechamento() {
 		if (this.dataFechamento != null) {
 			return (Date) this.dataFechamento.clone();
@@ -114,18 +211,43 @@ public class Inventario implements Serializable {
 		return this.dataFechamento;
 	}
 
+	/**
+	 * Obtem o gestor do inventario
+	 * 
+	 * @return Gestor do inventario
+	 * 
+	 * @throws CloneNotSupportedException
+	 *             Excecao de clonagem
+	 */
 	public Gestor getGestor() throws CloneNotSupportedException {
 		return gestor.clone();
 	}
 
+	/**
+	 * Obtem os bem analisados
+	 * 
+	 * @return Itens analisados
+	 */
 	public Set<Analise> getAnalisados() {
 		return Collections.unmodifiableSet(analisados);
 	}
 
+	/**
+	 * Indica se o inventario pode ser encerrado
+	 * 
+	 * @return <true> Inventario pode ser encerrado <false> Inventario nao pode
+	 *         ser encerrado
+	 */
 	public boolean podeSerEncerrado() {
 		return todasAnalisesFeitas() && !getEncerrado();
 	}
 
+	/**
+	 * Indica se todas as analises foram feitas
+	 * 
+	 * @return <true> Todas as analises foram feitas <false> Existem analises
+	 *         pendentes
+	 */
 	public boolean todasAnalisesFeitas() {
 		for (Analise c : analisados) {
 			if (c.getSituacao() == null) {
@@ -135,6 +257,12 @@ public class Inventario implements Serializable {
 		return true;
 	}
 
+	/**
+	 * Obtem se o encerramento pode ser feito
+	 * 
+	 * @return <true> Data de fechamento informada <false> Data de fechamento
+	 *         nao foi informada
+	 */
 	public boolean getEncerrado() {
 		return dataFechamento != null;
 	}

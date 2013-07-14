@@ -12,7 +12,12 @@ package br.ufg.inf.es.fs.contpatri.model;
  * @author Emerson Jose Porfirio
  */
 public enum TipoTombamento {
-
+	/**
+	 * Tombamento interno
+	 */
 	INTERNO,
+	/**
+	 * Tombamento externo
+	 */
 	EXTERNO;
 }

@@ -24,11 +24,14 @@ import java.io.Serializable;
 /**
  * Identifica o Agente Patrimonial responsável pelas coletas de bens
  * patrimoniais da Unidade da UFG.
- *  
+ * 
  * @author Emerson Jose Porfirio
  */
 public class Agente extends Pessoa implements Serializable, Cloneable {
 
+	/**
+	 * UID
+	 */
 	private static final long serialVersionUID = -3415217048887883532L;
 
 	/**
@@ -40,11 +43,14 @@ public class Agente extends Pessoa implements Serializable, Cloneable {
 	/**
 	 * Construtor da classe Agente
 	 * 
-	 * @param nome Nome do agente
+	 * @param nome
+	 *            Nome do agente
 	 * 
-	 * @param matricula Matricula do agente
+	 * @param matricula
+	 *            Matricula do agente
 	 * 
-	 * @param email Email do agente
+	 * @param email
+	 *            Email do agente
 	 */
 	public Agente(String nome, String matricula, String email) {
 		setNome(nome);
@@ -67,9 +73,8 @@ public class Agente extends Pessoa implements Serializable, Cloneable {
 			return true;
 		}
 		Agente outroAgente = (Agente) outro;
-		return !((this.getMatricula().compareTo(outroAgente.getMatricula()) != 0)
-				|| (this.getNome()
-				.compareTo(outroAgente.getNome()) != 0));
+		return !((this.getMatricula().compareTo(outroAgente.getMatricula()) != 0) || (this
+				.getNome().compareTo(outroAgente.getNome()) != 0));
 	}
 
 	/**
@@ -80,7 +85,8 @@ public class Agente extends Pessoa implements Serializable, Cloneable {
 		final int valorIncremental = 31;
 
 		int hash = valorInicial;
-		hash = hash * valorIncremental + (getNome().isEmpty() ? 0 : getNome().hashCode());
+		hash = hash * valorIncremental
+				+ (getNome().isEmpty() ? 0 : getNome().hashCode());
 		hash = hash * valorIncremental
 				+ (getMatricula().isEmpty() ? 0 : getMatricula().hashCode());
 		return hash;

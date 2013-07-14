@@ -26,8 +26,16 @@ package br.ufg.inf.es.fs.contpatri.model;
  * EXTRAVIADO - bem não encontrado em SubLocal estabelecido no Inventario
  */
 public enum TipoSituacaoColeta {
-
+	/**
+	 * Situacao localizado
+	 */
     LOCALIZADO,
+    /**
+	 * Situacao realocado
+	 */
     REALOCADO,
+    /**
+	 * Situacao extraviado
+	 */
     EXTRAVIADO;
 }
