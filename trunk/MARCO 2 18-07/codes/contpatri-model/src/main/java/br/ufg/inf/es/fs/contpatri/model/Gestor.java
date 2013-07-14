@@ -29,11 +29,29 @@ import java.io.Serializable;
  */
 public class Gestor extends Pessoa implements Serializable, Cloneable {
 
+	/**
+	 * UID
+	 */
 	private static final long serialVersionUID = -3415217048887883532L;
 
+	/**
+	 * Construtor da classe
+	 */
 	public Gestor() {
 	}
 
+	/**
+	 * Construtor da classe gestor
+	 * 
+	 * @param nome
+	 *            Nome do gestor
+	 * 
+	 * @param matricula
+	 *            Matricula do gestor
+	 * 
+	 * @param email
+	 *            Email do gestor
+	 */
 	public Gestor(String nome, String matricula, String email) {
 		setNome(nome);
 		setMatricula(matricula);
@@ -67,7 +85,8 @@ public class Gestor extends Pessoa implements Serializable, Cloneable {
 		final int valorIncremental = 31;
 
 		int hash = valorInicial;
-		hash = hash * valorIncremental + (getNome().isEmpty() ? 0 : getNome().hashCode());
+		hash = hash * valorIncremental
+				+ (getNome().isEmpty() ? 0 : getNome().hashCode());
 		hash = hash * valorIncremental
 				+ (getMatricula().isEmpty() ? 0 : getMatricula().hashCode());
 		return hash;

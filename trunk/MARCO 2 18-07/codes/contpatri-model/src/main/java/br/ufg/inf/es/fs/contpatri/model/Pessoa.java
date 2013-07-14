@@ -41,7 +41,7 @@ public class Pessoa {
 	 * 
 	 * @param email Email da pessoa
 	 */
-	public Pessoa(String nome, String matricula, String email) {
+	public Pessoa(String nome, String matricula, String email) {		
 		setNome(nome);
 		setMatricula(matricula);
 		setEmail(email);
@@ -52,7 +52,7 @@ public class Pessoa {
 	 * 
 	 * @param email Email da pessoa
 	 */
-	protected void setEmail(String email) {
+	protected final void setEmail(String email) {
 		if (email == null) {
 			throw new IllegalArgumentException(
 					"Campo email deve ser preenchido");
@@ -101,7 +101,7 @@ public class Pessoa {
 	 * 
 	 * @param nome Nome da pessoa
 	 */
-	protected void setNome(String nome) {
+	protected final void setNome(String nome) {
 		final int limiteNome = 60;
 		if (nome == null || nome.trim().length() == 0
 				|| nome.length() > limiteNome) {
@@ -125,7 +125,7 @@ public class Pessoa {
 	 * 
 	 * @param matricula Matricula da pessoa
 	 */
-	protected void setMatricula(String matricula) {
+	protected final void setMatricula(String matricula) {
 		if (matricula == null || matricula.trim().equals("")) {
 			throw new IllegalArgumentException(
 					"Matricula nao pode ser nula ou vazia");

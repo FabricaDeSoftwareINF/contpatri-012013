@@ -29,23 +29,64 @@ import java.util.Date;
  */
 public class Tombamento implements Serializable, Cloneable {
 
+	/**
+	 * UID
+	 */
 	private static final long serialVersionUID = 2967724032422394187L;
+	
+	/**
+	 * Id do tombamento
+	 */
 	private Long id;
+	
+	/**
+	 * Codigo do tombamento
+	 */
 	private String codTombamento;
+	
+	/**
+	 * Data do tombamento
+	 */
 	private Date dataTombamento;
+	
+	/**
+	 * Tipo do tombamento
+	 */
 	private TipoTombamento tipoTombamento;
 
+	/**
+	 * Obtem o tipo do tombamento
+	 * 
+	 * @return Tipo do tombamento
+	 */
 	public TipoTombamento getTipoTombamento() {
 		return tipoTombamento;
 	}
 
+	/**
+	 * Define o tipo do tombamento
+	 * 
+	 * @param tipoTombamento Tipo do tombamento
+	 */
 	public final void setTipoTombamento(TipoTombamento tipoTombamento) {
 		this.tipoTombamento = tipoTombamento;
 	}
 
+	/**
+	 * Construtor da classe
+	 */
 	public Tombamento() {
 	}
 
+	/**
+	 * Construtor de um tombamento
+	 * 
+	 * @param codTombamento Codigo do tombamento
+	 * 
+	 * @param dataTombamento Data do tombamento
+	 * 
+	 * @param tipoTombamento Tipo do tombamento
+	 */
 	public Tombamento(String codTombamento, Date dataTombamento,
 			TipoTombamento tipoTombamento) {
 		setCodTombamento(codTombamento);
@@ -53,10 +94,20 @@ public class Tombamento implements Serializable, Cloneable {
 		setTipoTombamento(tipoTombamento);
 	}
 
+	/**
+	 * Obtem a id do tombamento
+	 * 
+	 * @return Id do tombamento
+	 */
 	public Long getId() {
 		return id;
 	}
 
+	/**
+	 * Define o id do tombamento
+	 * 
+	 * @param id Id do tombamento
+	 */
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -72,6 +123,11 @@ public class Tombamento implements Serializable, Cloneable {
 		return codTombamento;
 	}
 
+	/**
+	 * Define o codigo do tombamento
+	 * 
+	 * @param codTombamento Codigo do tombamento
+	 */
 	private void setCodTombamento(String codTombamento) {
 		if (codTombamento == null || codTombamento.trim().isEmpty()) {
 			throw new IllegalArgumentException(
@@ -89,6 +145,11 @@ public class Tombamento implements Serializable, Cloneable {
 		return dataTombamento;
 	}
 
+	/**
+	 * Define a data do tombamento
+	 * 
+	 * @param dataTombamento Data do tombamento
+	 */
 	private void setDataTombamento(Date dataTombamento) {
 		if (dataTombamento == null) {
 			throw new IllegalArgumentException(
@@ -97,6 +158,9 @@ public class Tombamento implements Serializable, Cloneable {
 		this.dataTombamento = dataTombamento;
 	}
 
+	/**
+	 * Clona um tombamento
+	 */
 	@Override
 	public Tombamento clone() throws CloneNotSupportedException {
 		Tombamento clone = (Tombamento) super.clone();
@@ -104,6 +168,9 @@ public class Tombamento implements Serializable, Cloneable {
 		return clone;
 	}
 
+	/**
+	 * Compara dois tombamento
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (obj == null) {
@@ -122,6 +189,9 @@ public class Tombamento implements Serializable, Cloneable {
 		return false;
 	}
 
+	/**
+	 * HashCode do tombamento
+	 */
 	@Override
 	public int hashCode() {
 		final int valorInicial = 7;

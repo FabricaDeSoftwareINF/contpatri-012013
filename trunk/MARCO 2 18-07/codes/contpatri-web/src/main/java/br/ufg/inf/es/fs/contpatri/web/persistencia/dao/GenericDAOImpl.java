@@ -107,8 +107,7 @@ abstract class GenericDAOImpl<T, ID extends Serializable> implements
     public int rowCount(Class clazz) {
         Session hibernateSession = this.getSession();
         Query query = hibernateSession.createQuery("select count (*) from " + clazz.getName());
-        int total = ((Long) query.list().get(0)).intValue();
-        return total;
+        return ((Long) query.list().get(0)).intValue();
     }
 
     @Override
@@ -125,10 +124,10 @@ abstract class GenericDAOImpl<T, ID extends Serializable> implements
     public List findAll(Class clazz) {
         HibernateUtil.beginTransaction();
         Session hibernateSession = this.getSession();
-        List T = null;
+        List t = null;
         Query query = hibernateSession.createQuery("from " + clazz.getName());
-        T = query.list();
+        t = query.list();
         HibernateUtil.commitTransaction();
-        return T;
+        return t;
     }
 }

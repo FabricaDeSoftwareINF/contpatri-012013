@@ -30,23 +30,61 @@ import java.io.Serializable;
  */
 public class Origem implements Serializable, Cloneable {
 
+	/**
+	 * UID
+	 */
 	private static final long serialVersionUID = 7859647779471307005L;
+
+	/**
+	 * Id da origem
+	 */
 	private Long id;
+
+	/**
+	 * Resumo da origem
+	 */
 	private String resumo;
+
+	/**
+	 * Detalhe da origem
+	 */
 	private String detalhe;
 
+	/**
+	 * Construtor da classe
+	 */
 	public Origem() {
 	}
 
+	/**
+	 * Construtor de uma origem
+	 * 
+	 * @param resumo
+	 *            Resumo da origem
+	 * 
+	 * @param detalhe
+	 *            Detalhe de uma origem
+	 */
 	public Origem(String resumo, String detalhe) {
 		setResumo(resumo);
 		setDetalhe(detalhe);
 	}
 
+	/**
+	 * Obtem o id da origem
+	 * 
+	 * @return Id da origem
+	 */
 	public Long getId() {
 		return id;
 	}
 
+	/**
+	 * Define o id da origem
+	 * 
+	 * @param idOrigem
+	 *            id da origem
+	 */
 	public void setId(Long idOrigem) {
 		this.id = idOrigem;
 	}
@@ -59,6 +97,12 @@ public class Origem implements Serializable, Cloneable {
 		return resumo;
 	}
 
+	/**
+	 * Define o resumo da origem
+	 * 
+	 * @param resumo
+	 *            Resumo da origem
+	 */
 	private void setResumo(String resumo) {
 		final int limiteResumo = 40;
 		if (resumo == null || resumo.trim().length() == 0
@@ -79,10 +123,19 @@ public class Origem implements Serializable, Cloneable {
 		return detalhe;
 	}
 
+	/**
+	 * Define o detalhe da origem
+	 * 
+	 * @param detalhe
+	 *            Detalhe da origem
+	 */
 	private void setDetalhe(String detalhe) {
 		this.detalhe = detalhe;
 	}
 
+	/**
+	 * Compara a origem
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (obj == null) {
@@ -98,6 +151,9 @@ public class Origem implements Serializable, Cloneable {
 		return this.resumo.equals(outro.resumo);
 	}
 
+	/**
+	 * HashCode da origem
+	 */
 	public int hashCode() {
 		final int valorInicial = 1;
 		final int valorIncremental = 31;

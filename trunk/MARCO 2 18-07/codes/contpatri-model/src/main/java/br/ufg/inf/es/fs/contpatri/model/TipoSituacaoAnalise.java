@@ -28,8 +28,16 @@ package br.ufg.inf.es.fs.contpatri.model;
  * @author Emerson Jose Porfirio
  */
 public enum TipoSituacaoAnalise {
-
+	/**
+	 * Situacao localizado
+	 */
 	LOCALIZADO,
+	/**
+	 * Situacao realocado
+	 */
 	REALOCADO,
+	/**
+	 * Situacao extraviado
+	 */
 	EXTRAVIADO;
 }

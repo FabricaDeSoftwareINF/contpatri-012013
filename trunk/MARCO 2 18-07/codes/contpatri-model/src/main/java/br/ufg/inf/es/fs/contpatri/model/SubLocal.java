@@ -30,24 +30,57 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class SubLocal implements Serializable, Cloneable {
 
+	/**
+	 * Id de um sublocal
+	 */
 	private Long id;
+
+	/**
+	 * Nome de um sublocal
+	 */
 	private String nome;
 
+	/**
+	 * Construtor da classe
+	 */
 	public SubLocal() {
 	}
 
+	/**
+	 * Construtor de um sublocal
+	 * 
+	 * @param nome
+	 *            Nome do sublocal
+	 */
 	public SubLocal(String nome) {
 		setNome(nome);
 	}
 
+	/**
+	 * Obtem o id do sublocal
+	 * 
+	 * @return Id do sublocal
+	 */
 	public Long getId() {
 		return id;
 	}
 
+	/**
+	 * Define o id do sublocal
+	 * 
+	 * @param id
+	 *            Id do sublocal
+	 */
 	public void setId(Long id) {
 		this.id = id;
 	}
 
+	/**
+	 * Define o nome do sublocal
+	 * 
+	 * @param nome
+	 *            Nome do sublocal
+	 */
 	private void setNome(String nome) {
 		if (nome == null || nome.trim().equals("")) {
 			throw new IllegalArgumentException(
@@ -56,15 +89,26 @@ public class SubLocal implements Serializable, Cloneable {
 		this.nome = nome;
 	}
 
+	/**
+	 * Obtem o nome do sublocal
+	 * 
+	 * @return Nome do sublocal
+	 */
 	public String getNome() {
 		return nome;
 	}
 
+	/**
+	 * Clona um sublocal
+	 */
 	@Override
 	public SubLocal clone() throws CloneNotSupportedException {
 		return (SubLocal) super.clone();
 	}
 
+	/**
+	 * Compara dois sublocais
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (obj == null) {
@@ -80,6 +124,9 @@ public class SubLocal implements Serializable, Cloneable {
 		return this.nome.equals(outro.nome);
 	}
 
+	/**
+	 * HashCode do sublocal
+	 */
 	@Override
 	public int hashCode() {
 		final int valorInicial = 7;

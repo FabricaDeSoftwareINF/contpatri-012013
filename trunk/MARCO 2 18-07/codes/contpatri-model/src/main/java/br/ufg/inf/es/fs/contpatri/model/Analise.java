@@ -24,18 +24,22 @@ import java.io.Serializable;
 /**
  * Resultado da analise de um determinado bem patrimonial realizado dentro de um
  * inventario.
- *
+ * 
  * @author Emerson Jose Porfirio
  */
 public class Analise implements Serializable {
 
+	/**
+	 * UID
+	 */
 	private static final long serialVersionUID = -8538872437513272042L;
 
+	/**
+	 * Tipo de situacao de um bem
+	 */
 	public enum TipoSituacaoAnalise {
-
-		LOCALIZADO("Localizado"),
-		REALOCADO("Realocado"),
-		EXTRAVIADO("Extraviado");
+		LOCALIZADO("Localizado"), REALOCADO("Realocado"), EXTRAVIADO(
+				"Extraviado");
 		private String descricao;
 
 		TipoSituacaoAnalise(String descricao) {
@@ -46,32 +50,86 @@ public class Analise implements Serializable {
 			return descricao;
 		}
 	}
+
+	/**
+	 * Identificador interno
+	 */
 	private Long id;
+
+	/**
+	 * Bem patrimonial
+	 */
 	private BemPatrimonial bemPatrimonial;
+
+	/**
+	 * Inventario do bem
+	 */
 	private Inventario inventario;
+
+	/**
+	 * Situacao do bem
+	 */
 	private TipoSituacaoAnalise situacao;
 
+	/**
+	 * Construtor da classe
+	 */
 	public Analise() {
 	}
 
-	public Analise(BemPatrimonial bemPatrimonial, Inventario inventario, TipoSituacaoAnalise situacao) {
+	/**
+	 * Construtor da classe de analise
+	 * 
+	 * @param bemPatrimonial
+	 *            Bem patrimonial
+	 * 
+	 * @param inventario
+	 *            Inventario do bem
+	 * 
+	 * @param situacao
+	 *            Situacao do bem
+	 */
+	public Analise(BemPatrimonial bemPatrimonial, Inventario inventario,
+			TipoSituacaoAnalise situacao) {
 		setBemPatrimonial(bemPatrimonial);
 		setInventario(inventario);
 		setSituacao(situacao);
 	}
 
+	/**
+	 * Obtem o id
+	 * 
+	 * @return Id
+	 */
 	public Long getId() {
 		return id;
 	}
 
+	/**
+	 * Define o id
+	 * 
+	 * @param id
+	 *            Id
+	 */
 	public void setId(Long id) {
 		this.id = id;
 	}
 
+	/**
+	 * Obtem o bem patrimonial
+	 * 
+	 * @return Bem patrimonial
+	 */
 	public BemPatrimonial getBemPatrimonial() {
 		return bemPatrimonial;
 	}
 
+	/**
+	 * Define o bem patrimonial
+	 * 
+	 * @param bemPatrimonial
+	 *            Bem patrimonial
+	 */
 	private void setBemPatrimonial(BemPatrimonial bemPatrimonial) {
 		if (bemPatrimonial == null) {
 			throw new IllegalArgumentException("O bem não pode ser nulo");
@@ -79,10 +137,21 @@ public class Analise implements Serializable {
 		this.bemPatrimonial = bemPatrimonial;
 	}
 
+	/**
+	 * Obtem o inventario
+	 * 
+	 * @return Inventario
+	 */
 	public Inventario getInventario() {
 		return inventario;
 	}
 
+	/**
+	 * Define o inventario
+	 * 
+	 * @param inventario
+	 *            Inventario
+	 */
 	private void setInventario(Inventario inventario) {
 		if (inventario == null) {
 			throw new IllegalArgumentException("O inventário não pode ser nulo");
@@ -90,14 +159,28 @@ public class Analise implements Serializable {
 		this.inventario = inventario;
 	}
 
+	/**
+	 * Obtem a situacao do bem
+	 * 
+	 * @return Situacao do bem
+	 */
 	public TipoSituacaoAnalise getSituacao() {
 		return situacao;
 	}
 
+	/**
+	 * Define a situacao do bem
+	 * 
+	 * @param situacao
+	 *            Situacao do bem
+	 */
 	private void setSituacao(TipoSituacaoAnalise situacao) {
 		this.situacao = situacao;
 	}
 
+	/**
+	 * Compara duas analises
+	 */
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) {
@@ -116,11 +199,15 @@ public class Analise implements Serializable {
 		return true;
 	}
 
+	/**
+	 * HashCode da analise
+	 */
 	@Override
 	public int hashCode() {
 		final int valorIncremental = 31;
 		int result = bemPatrimonial != null ? bemPatrimonial.hashCode() : 0;
-		result = valorIncremental * result + (inventario != null ? inventario.hashCode() : 0);
+		result = valorIncremental * result
+				+ (inventario != null ? inventario.hashCode() : 0);
 		return result;
 	}
 }

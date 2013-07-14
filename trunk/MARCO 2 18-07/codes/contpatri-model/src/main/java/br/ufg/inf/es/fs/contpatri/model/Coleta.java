@@ -28,10 +28,15 @@ import java.io.Serializable;
  * Resultado da conferência de um determinado bem patrimonial realizado dentro
  * de um inventário
  */
-
 public class Coleta implements Serializable {
+	/**
+	 * UID
+	 */
 	private static final long serialVersionUID = -8538872437513272042L;
 
+	/**
+	 * Tipo de situacao da coleta
+	 */
 	public enum TipoSituacaoColeta {
 		LOCALIZADO("Localizado"), REALOCADO("Realocado"), EXTRAVIADO(
 				"Extraviado");
@@ -47,14 +52,42 @@ public class Coleta implements Serializable {
 		}
 	}
 
+	/**
+	 * Id da coleta
+	 */
 	private Long id;
+
+	/**
+	 * Bem patrimonial da coleta
+	 */
 	private BemPatrimonial bemPatrimonial;
+
+	/**
+	 * Inventario da coleta
+	 */
 	private Inventario inventario;
+
+	/**
+	 * Situacao da coleta
+	 */
 	private TipoSituacaoColeta situacao;
 
+	/**
+	 * Construtor da coleta
+	 */
 	public Coleta() {
 	}
 
+	/**
+	 * Construtor da coleta
+	 * 
+	 * @param bemPatrimonial
+	 *            Bem patrimonial da coleta
+	 * @param inventario
+	 *            Inventario da coleta
+	 * @param situacao
+	 *            Situacao da coleta
+	 */
 	public Coleta(BemPatrimonial bemPatrimonial, Inventario inventario,
 			TipoSituacaoColeta situacao) {
 		setBemPatrimonial(bemPatrimonial);
@@ -62,18 +95,40 @@ public class Coleta implements Serializable {
 		setSituacao(situacao);
 	}
 
+	/**
+	 * Obtem a id
+	 * 
+	 * @return Id da coleta
+	 */
 	public Long getId() {
 		return id;
 	}
 
+	/**
+	 * Define o id
+	 * 
+	 * @param id
+	 *            Id da coleta
+	 */
 	public void setId(Long id) {
 		this.id = id;
 	}
 
+	/**
+	 * Obtem o bem patrimonial
+	 * 
+	 * @return Bem patrimonial
+	 */
 	public BemPatrimonial getBemPatrimonial() {
 		return bemPatrimonial;
 	}
 
+	/**
+	 * Define o bem patrimonial da coleta
+	 * 
+	 * @param bemPatrimonial
+	 *            Bem patrimonial da coleta
+	 */
 	public final void setBemPatrimonial(BemPatrimonial bemPatrimonial) {
 		if (bemPatrimonial == null) {
 			throw new IllegalArgumentException("O bem não pode ser nulo");
@@ -81,10 +136,21 @@ public class Coleta implements Serializable {
 		this.bemPatrimonial = bemPatrimonial;
 	}
 
+	/**
+	 * Obtem o inventario da coleta
+	 * 
+	 * @return Inventario da coleta
+	 */
 	public Inventario getInventario() {
 		return inventario;
 	}
 
+	/**
+	 * Define o inventario da coleta
+	 * 
+	 * @param inventario
+	 *            Inventario da coleta
+	 */
 	public final void setInventario(Inventario inventario) {
 		if (inventario == null) {
 			throw new IllegalArgumentException("O inventário não pode ser nulo");
@@ -92,14 +158,29 @@ public class Coleta implements Serializable {
 		this.inventario = inventario;
 	}
 
+	/**
+	 * Obtem a situacao da coleta
+	 * 
+	 * @return Situacao da coleta
+	 * 
+	 */
 	public TipoSituacaoColeta getSituacao() {
 		return situacao;
 	}
 
+	/**
+	 * Define a situacao da coleta
+	 * 
+	 * @param situacao
+	 *            Situacao da coleta
+	 */
 	public final void setSituacao(TipoSituacaoColeta situacao) {
 		this.situacao = situacao;
 	}
 
+	/**
+	 * Compara duas coletas
+	 */
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) {
@@ -118,6 +199,9 @@ public class Coleta implements Serializable {
 		return true;
 	}
 
+	/**
+	 * HashCode da coleta
+	 */
 	@Override
 	public int hashCode() {
 		final int valorIncremental = 31;
