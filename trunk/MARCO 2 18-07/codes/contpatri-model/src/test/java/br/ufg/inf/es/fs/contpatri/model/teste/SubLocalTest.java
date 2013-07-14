@@ -17,45 +17,39 @@
  * fornecido "da maneira que está", sem garantias ou condições de qualquer tipo,
  * nem expressas nem implícitas. Em caso de dúvidas referir a licença GNU-GPL.
  */
-package br.ufg.inf.es.fs.contpatri.contpatri.model;
+package br.ufg.inf.es.fs.contpatri.model.teste;
 
 import org.junit.Test;
 
-import br.ufg.inf.es.fs.contpatri.model.Analise;
-import br.ufg.inf.es.fs.contpatri.model.BemPatrimonial;
-import br.ufg.inf.es.fs.contpatri.model.Inventario;
+import br.ufg.inf.es.fs.contpatri.model.SubLocal;
 
 import static junit.framework.Assert.assertEquals;
-import static org.mockito.Mockito.mock;
 
 /**
  * Testes unitários da respectiva classe de domínio
  *
  * @author Emerson Jose Porfirio
  */
-public class AnaliseTest {
+public class SubLocalTest {
 
 	@Test
-	public void criaAnaliseValido() {
-		Inventario inventario = mock(Inventario.class);
-		BemPatrimonial bemPatrimonial = mock(BemPatrimonial.class);
-		Analise analise = new Analise(bemPatrimonial, inventario, null);
-		assertEquals(inventario, analise.getInventario());
-		assertEquals(bemPatrimonial, analise.getBemPatrimonial());
-		assertEquals(null, analise.getSituacao());
+	public void testarLocalValido() {
+		SubLocal local = new SubLocal("Direção");
+		assertEquals("Direção", local.getNome());
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void testarBemPatrimonialNulo() {
-		Inventario inventario = mock(Inventario.class);
-		new Analise(null, inventario,
-			Analise.TipoSituacaoAnalise.LOCALIZADO);
+	public void testarLocalInvalido1() {
+		new SubLocal(null);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void testarInventarioNulo() {
-		BemPatrimonial bemPermanente = mock(BemPatrimonial.class);
-		new Analise(bemPermanente, null,
-			Analise.TipoSituacaoAnalise.LOCALIZADO);
+	public void testarLocalInvalido2() {
+		new SubLocal("");
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testarLocalInvalido3() {
+		new SubLocal(" ");
 	}
 }
