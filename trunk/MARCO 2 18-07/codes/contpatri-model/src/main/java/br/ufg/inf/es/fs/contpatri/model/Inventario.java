@@ -107,7 +107,7 @@ public class Inventario implements Serializable {
 	 * @param bem
 	 *            Bem analisado
 	 */
-	public void adicionarAnalisado(BemPatrimonial bem) {
+	public final void adicionarAnalisado(BemPatrimonial bem) {
 		this.analisados.add(new Analise(bem, this, null));
 	}
 
