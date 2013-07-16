@@ -3,20 +3,23 @@
 <hibernate-mapping>
     <class name="br.ufg.inf.es.fs.contpatri.model.Coleta" table="Coleta" >
         <id name="id" type="java.lang.Long">
-            <column name="id" />
-            <generator class="identity" />
+            <column name="idBemPatrimonial" />
+            <generator class="foreign">
+                <param name="property">BemPatrimonial</param>
+            </generator>
         </id>
-        <many-to-one class="br.ufg.inf.es.fs.contpatri.model.BemPatrimonial" fetch="select" name="bemPatrimonial">
-            <column name="idBemPatrimonial" not-null="true"/>
-        </many-to-one>
+        <one-to-one class="br.ufg.inf.es.fs.contpatri.model.BemPatrimonial" name="bemPatrimonial"
+            constrained="true">
+        </one-to-one>
         <many-to-one class="br.ufg.inf.es.fs.contpatri.model.Inventario" fetch="select" name="inventario">
             <column name="idInventario" not-null="true"/>
         </many-to-one>
-        <property name="TipoSituacaoColeta" column="tipoSituacaoColeta">
+        <property name="situacao" column="tipoSituacaoColeta">
             <type name="org.hibernate.type.EnumType">
                 <param name="enumClass">
-                    br.ufg.inf.es.fs.contpatri.model.Coleta.TipoSituacaoColeta
+                    br.ufg.inf.es.fs.contpatri.model.TipoSituacao
                 </param>
+                <param name="type">12</param>
             </type>       
         </property>
     </class>

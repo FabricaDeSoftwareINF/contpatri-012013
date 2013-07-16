@@ -10,10 +10,24 @@
             <column length="19" name="dataEmissao" not-null="true"/>
         </property>
         <property name="dataFechamento" type="timestamp">
-            <column length="19" name="dataFechamento" not-null="true"/>
+            <column length="19" name="dataFechamento" />
         </property>
         <many-to-one class="br.ufg.inf.es.fs.contpatri.model.Gestor" fetch="select" name="Gestor">
-            <column name="idGestor" not-null="true"/>
+            <column name="idGestor"/>
         </many-to-one>
+        <set name="analises" table="Analise" 
+				inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="idInventario" not-null="true" />
+            </key>
+            <one-to-many class="br.ufg.inf.es.fs.contpatri.model.Analise" />
+        </set>
+        <set name="coletas" table="Coleta" 
+				inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="idInventario" not-null="true" />
+            </key>
+            <one-to-many class="br.ufg.inf.es.fs.contpatri.model.Coleta" />
+        </set>
     </class>
 </hibernate-mapping>

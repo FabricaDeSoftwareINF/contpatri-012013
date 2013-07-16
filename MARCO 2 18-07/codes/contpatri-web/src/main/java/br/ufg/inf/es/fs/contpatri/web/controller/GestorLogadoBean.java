@@ -17,29 +17,40 @@
  * fornecido "da maneira que está", sem garantias ou condições de qualquer tipo,
  * nem expressas nem implícitas. Em caso de dúvidas referir a licença GNU-GPL.
  */
-package br.ufg.inf.es.fs.contpatri.web.persistencia.dao;
+package br.ufg.inf.es.fs.contpatri.web.controller;
 
-import br.ufg.inf.es.fs.contpatri.model.Inventario;
-import br.ufg.inf.es.fs.contpatri.web.persistencia.HibernateUtil;
-import java.io.Serializable;
-import org.hibernate.Query;
-import org.hibernate.Session;
+import br.ufg.inf.es.fs.contpatri.model.Gestor;
+import br.ufg.inf.es.fs.contpatri.web.persistencia.dao.GestorDAO;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 /**
  *
  * @author Guilherme de Paula
  */
-public class InventarioDAO extends GenericDAOImpl<Inventario, Long>  implements Serializable{
+@ManagedBean
+@SessionScoped
+public class GestorLogadoBean {
+
+    private GestorDAO gestorDAO;
+    private Gestor gestor;
     
-    public Inventario findUltimoInventarioEmitido(){
-        String hql = "from Inventario order by dataEmissao desc";
-        Session session = HibernateUtil.beginTransaction();
-        Query query = session.createQuery(hql);
-        query.setMaxResults(1);
-        Inventario inventario = findOne(query);
-        HibernateUtil.commitTransaction();
-        
-        return inventario;
+    /**
+     * Creates a new instance of GestorLogadoBean
+     */
+    public GestorLogadoBean() {
+        gestorDAO = new GestorDAO();
+        gestor = gestorDAO.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
     }
+
+    public Gestor getGestor() {
+        return gestor;
+    }
+
+    public void setGestor(Gestor gestor) {
+        this.gestor = gestor;
+    }
+    
     
 }

@@ -8,7 +8,7 @@
                 CONTPATRI
             </h:panelGroup>
             <h:panelGroup id="logado" >
-                Logado como # <h:outputLink value="#">(Sair)</h:outputLink> 
+                Logado como #{gestorLogadoBean.gestor.nome} <h:outputLink value="#{request.contextPath}/j_spring_security_logout">(Sair)</h:outputLink> 
             </h:panelGroup>
         </h:panelGroup>
     </h:body>
