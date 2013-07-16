@@ -20,12 +20,23 @@
 package br.ufg.inf.es.fs.contpatri.web.persistencia.dao;
 
 import br.ufg.inf.es.fs.contpatri.model.Gestor;
+import br.ufg.inf.es.fs.contpatri.web.persistencia.HibernateUtil;
 import java.io.Serializable;
+import org.hibernate.Query;
 
 /**
  *
  * @author Guilherme de Paula
  */
-public class GestorDAO extends GenericDAOImpl<Gestor, Long>  implements Serializable{
-    
+public class GestorDAO extends GenericDAOImpl<Gestor, Long> implements Serializable {
+
+    public Gestor findByEmail(String email) {
+        String hql = "from Gestor where email = :email";
+        HibernateUtil.beginTransaction();
+        Query query = HibernateUtil.getSession().createQuery(hql).setParameter("email", email);
+        Gestor gestor = findOne(query);
+        HibernateUtil.commitTransaction();
+        
+        return gestor;
+    }
 }

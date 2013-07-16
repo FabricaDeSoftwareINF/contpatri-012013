@@ -12,50 +12,8 @@
 
 
     <ui:define name="conteudo">
-        <h:form>
-            <h:panelGroup layout="block" class="container-centro">
-                <cp:painel titulo="Gestores">
-                    <p:commandButton value="Cadastrar" onclick="cadastrarGestorDialog.show();"/>
-                    <p:button value="Editar"/>
-                    <p:commandButton value="Excluir" onclick="confirmacaoExclusaoDialog.show();"/>
-                    <p:dataTable id="tabela-agentes" emptyMessage="Não existem gestores cadastrados">
-                    </p:dataTable>
-                </cp:painel>
-            </h:panelGroup>
-            <p:dialog id="modalDialog"
-                      header="Cadastrar Gestor"
-                      widgetVar="cadastrarGestorDialog"
-                      modal="true"
-                      height="160px"
-                      width="420px"
-                      resizable="false" draggable="false">  
-                <table>
-                    <tr>
-                        <td><h:outputText value="Nome completo"/></td>
-                        <td><p:inputText /></td>
-                    </tr>
-                    <tr>
-                        <td><h:outputText value="Usuário"/></td>
-                        <td><p:inputText /></td>
-                    </tr>
-                    <tr>
-                        <td><h:outputText value="Senha"/></td>
-                        <td><p:password/></td>
-                    </tr>
-                </table>
-                <h:panelGroup layout="block" style="position: absolute; right: 10px;">
-                    <p:commandButton value="Cadastrar"/>
-                    <p:commandButton value="Cancelar" onclick="cadastrarGestorDialog.hide()"/>
-                </h:panelGroup>
-            </p:dialog>
-            <p:confirmDialog header="Excluir Gestor"
-                             message="Tem certeza que deseja excluir o gestor selecionado?"
-                             widgetVar="confirmacaoExclusaoDialog" >
-                <p:commandButton value="Ok"/>  
-                <p:commandButton value="Cancelar" onclick="confirmacaoExclusaoDialog.hide()"
-                                 type="button" />  
-            </p:confirmDialog>
-        </h:form>
+        <cp:cadastroUsuario  tipoUsuario="Gestor" tipoUsuarioPlural="Gestores"
+                            tituloPainel="Gestores"  usuarioBean="#{gestorBean}"/>
     </ui:define>
 
 </ui:composition>

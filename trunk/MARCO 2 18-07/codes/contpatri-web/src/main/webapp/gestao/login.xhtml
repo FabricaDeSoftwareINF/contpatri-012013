@@ -3,14 +3,24 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>ContPatri Web - Login</title>
     </h:head>
     <h:body>
         <h:outputStylesheet library="css" name="estilo.css"/>
         <h:outputStylesheet library="css" name="login.css"/>
-        
+
+        <c:if test="${not empty param.login_incorreto}">
+            <h:panelGroup layout="block" style="left: 50%; top: 45%; width: 500px; position: absolute; min-width: 280px;
+                          margin: -200px 0 0 -250px; background-color: tomato; border-radius: 5px; padding: 3px;">
+                <f:verbatim>
+                    Usuário ou senha incorretos
+                </f:verbatim>
+            </h:panelGroup>
+        </c:if>
+
         <h:panelGroup layout="block" class="container">
             <!-- Título -->
             <h:panelGroup layout="block" class="logo">
@@ -29,7 +39,7 @@
                     </h:panelGroup>
 
                     <h:panelGroup layout="block" class="login">
-                        <h:form>
+                        <form action="./j_spring_security_check" method="post">
                             <fieldset>
                                 <ul>
                                     <li id="campo-usuario">
@@ -39,7 +49,7 @@
                                                      size="26"  
                                                      style="width: 460px"
                                                      required="true" value="${SPRING_SECURITY_LAST_EXCEPTION.authentication.principal}"/>
-                                        <p:watermark for="j_username" value="Usuário"/>
+                                        <p:watermark for="j_username" value="E-mail"/>
                                         <span id="icone-campo-usuario"></span>
                                     </li>
                                     <li id="campo-senha">
@@ -57,11 +67,11 @@
                                     </li>
                                     <li>
                                         <!-- TODO Tipo 'button' apenas na versão inicial, o correto é submit -->
-                                        <input class="entrar" type="button" value="Entrar"/>
+                                        <input class="entrar" type="submit" value="Entrar"/>
                                     </li>
                                 </ul>
                             </fieldset>
-                        </h:form>
+                        </form>
                     </h:panelGroup>
                 </h:panelGroup>
             </h:panelGroup>
