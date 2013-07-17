@@ -34,23 +34,6 @@ public class Coleta implements Serializable {
 	 */
 	private static final long serialVersionUID = -8538872437513272042L;
 
-	/**
-	 * Tipo de situacao da coleta
-	 */
-	public enum TipoSituacaoColeta {
-		LOCALIZADO("Localizado"), REALOCADO("Realocado"), EXTRAVIADO(
-				"Extraviado");
-
-		private String descricao;
-
-		TipoSituacaoColeta(String descricao) {
-			this.descricao = descricao;
-		}
-
-		public String getDescricao() {
-			return descricao;
-		}
-	}
 
 	/**
 	 * Id da coleta
@@ -70,7 +53,7 @@ public class Coleta implements Serializable {
 	/**
 	 * Situacao da coleta
 	 */
-	private TipoSituacaoColeta situacao;
+	private TipoSituacao situacao;
 
 	/**
 	 * Construtor da coleta
@@ -89,7 +72,7 @@ public class Coleta implements Serializable {
 	 *            Situacao da coleta
 	 */
 	public Coleta(BemPatrimonial bemPatrimonial, Inventario inventario,
-			TipoSituacaoColeta situacao) {
+			TipoSituacao situacao) {
 		setBemPatrimonial(bemPatrimonial);
 		setInventario(inventario);
 		setSituacao(situacao);
@@ -164,7 +147,7 @@ public class Coleta implements Serializable {
 	 * @return Situacao da coleta
 	 * 
 	 */
-	public TipoSituacaoColeta getSituacao() {
+	public TipoSituacao getSituacao() {
 		return situacao;
 	}
 
@@ -174,7 +157,7 @@ public class Coleta implements Serializable {
 	 * @param situacao
 	 *            Situacao da coleta
 	 */
-	public final void setSituacao(TipoSituacaoColeta situacao) {
+	public final void setSituacao(TipoSituacao situacao) {
 		this.situacao = situacao;
 	}
 

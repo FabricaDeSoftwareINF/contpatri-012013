@@ -24,6 +24,7 @@ import org.junit.Test;
 import br.ufg.inf.es.fs.contpatri.model.Analise;
 import br.ufg.inf.es.fs.contpatri.model.BemPatrimonial;
 import br.ufg.inf.es.fs.contpatri.model.Inventario;
+import br.ufg.inf.es.fs.contpatri.model.TipoSituacao;
 
 import static junit.framework.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
@@ -49,13 +50,13 @@ public class AnaliseTest {
 	public void testarBemPatrimonialNulo() {
 		Inventario inventario = mock(Inventario.class);
 		new Analise(null, inventario,
-			Analise.TipoSituacaoAnalise.LOCALIZADO);
+			TipoSituacao.LOCALIZADO);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testarInventarioNulo() {
 		BemPatrimonial bemPermanente = mock(BemPatrimonial.class);
 		new Analise(bemPermanente, null,
-			Analise.TipoSituacaoAnalise.LOCALIZADO);
+			TipoSituacao.LOCALIZADO);
 	}
 }

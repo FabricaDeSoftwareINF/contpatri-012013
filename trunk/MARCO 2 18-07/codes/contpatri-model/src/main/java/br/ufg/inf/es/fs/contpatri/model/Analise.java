@@ -35,23 +35,6 @@ public class Analise implements Serializable {
 	private static final long serialVersionUID = -8538872437513272042L;
 
 	/**
-	 * Tipo de situacao de um bem
-	 */
-	public enum TipoSituacaoAnalise {
-		LOCALIZADO("Localizado"), REALOCADO("Realocado"), EXTRAVIADO(
-				"Extraviado");
-		private String descricao;
-
-		TipoSituacaoAnalise(String descricao) {
-			this.descricao = descricao;
-		}
-
-		public String getDescricao() {
-			return descricao;
-		}
-	}
-
-	/**
 	 * Identificador interno
 	 */
 	private Long id;
@@ -69,7 +52,7 @@ public class Analise implements Serializable {
 	/**
 	 * Situacao do bem
 	 */
-	private TipoSituacaoAnalise situacao;
+	private TipoSituacao situacao;
 
 	/**
 	 * Construtor da classe
@@ -90,7 +73,7 @@ public class Analise implements Serializable {
 	 *            Situacao do bem
 	 */
 	public Analise(BemPatrimonial bemPatrimonial, Inventario inventario,
-			TipoSituacaoAnalise situacao) {
+			TipoSituacao situacao) {
 		setBemPatrimonial(bemPatrimonial);
 		setInventario(inventario);
 		setSituacao(situacao);
@@ -130,7 +113,7 @@ public class Analise implements Serializable {
 	 * @param bemPatrimonial
 	 *            Bem patrimonial
 	 */
-	private void setBemPatrimonial(BemPatrimonial bemPatrimonial) {
+	public void setBemPatrimonial(BemPatrimonial bemPatrimonial) {
 		if (bemPatrimonial == null) {
 			throw new IllegalArgumentException("O bem não pode ser nulo");
 		}
@@ -152,7 +135,7 @@ public class Analise implements Serializable {
 	 * @param inventario
 	 *            Inventario
 	 */
-	private void setInventario(Inventario inventario) {
+	public void setInventario(Inventario inventario) {
 		if (inventario == null) {
 			throw new IllegalArgumentException("O inventário não pode ser nulo");
 		}
@@ -164,7 +147,7 @@ public class Analise implements Serializable {
 	 * 
 	 * @return Situacao do bem
 	 */
-	public TipoSituacaoAnalise getSituacao() {
+	public TipoSituacao getSituacao() {
 		return situacao;
 	}
 
@@ -174,7 +157,7 @@ public class Analise implements Serializable {
 	 * @param situacao
 	 *            Situacao do bem
 	 */
-	private void setSituacao(TipoSituacaoAnalise situacao) {
+	public void setSituacao(TipoSituacao situacao) {
 		this.situacao = situacao;
 	}
 
