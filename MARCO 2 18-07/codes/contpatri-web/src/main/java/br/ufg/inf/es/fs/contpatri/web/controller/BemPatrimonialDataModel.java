@@ -38,27 +38,38 @@ public class BemPatrimonialDataModel extends LazyDataModel<BemPatrimonial> imple
 
     private BemPatrimonialDAO bemPatrimonialDAO;
 
+    /**
+     *
+     */
     public BemPatrimonialDataModel() {
         bemPatrimonialDAO = new BemPatrimonialDAO();
     }
     
+    /**
+     *
+     * @param first primeiro elemento da lista
+     * @param pageSize tamanho da página
+     * @param sortField campo de ordenação
+     * @param sortOrder ordem (decrescente, ascendente)
+     * @param filters filtros
+     * @return lista com os bens patrimoniais
+     */
     @Override
     public List<BemPatrimonial> load(int first, int pageSize, String sortField,
             SortOrder sortOrder, Map<String, String> filters) {
         StringBuilder sb = new StringBuilder("from BemPatrimonial ");
         
+        // Filtros
         if (!filters.isEmpty()) {
             sb.append("where ");
-        }
-        
+        }        
         for (Iterator<String> it = filters.keySet().iterator(); it.hasNext();) {
-            // TODO arrumar risco de SQL Injection
             String filterProperty = it.next();
             String filterValue = filters.get(filterProperty);
             sb.append(filterProperty);
             sb.append(" like ");
             sb.append('\'');
-            sb.append(filterValue); //ERRADO
+            sb.append(filterValue);
             sb.append("%");
             sb.append('\'').append(' ');
             if (it.hasNext()) {
@@ -66,6 +77,7 @@ public class BemPatrimonialDataModel extends LazyDataModel<BemPatrimonial> imple
             }
         }
         
+        // Ordenação
         if (sortField != null) {
             if (sortOrder == SortOrder.ASCENDING) {
                 sb.append("order by ").append(sortField).append(" asc");
@@ -74,6 +86,7 @@ public class BemPatrimonialDataModel extends LazyDataModel<BemPatrimonial> imple
             }
         }
         
+        // Obtendo dados
         String hql = sb.toString();
         HibernateUtil.beginTransaction();
         Query query = HibernateUtil.getSession().createQuery(hql);
@@ -82,6 +95,7 @@ public class BemPatrimonialDataModel extends LazyDataModel<BemPatrimonial> imple
         List<BemPatrimonial> dados = bemPatrimonialDAO.findMany(query);
         HibernateUtil.commitTransaction();
 
+        // Contagem das linhas na tabela
         HibernateUtil.beginTransaction();
         String hqlRowCount = "select count (*) ".concat(hql);
         query = HibernateUtil.getSession().createQuery(hqlRowCount);
@@ -94,14 +108,14 @@ public class BemPatrimonialDataModel extends LazyDataModel<BemPatrimonial> imple
         return dados;
     }
 
+    /**
+     *
+     * @param object
+     * @return chave do bem patrimonial
+     */
     @Override
     public Object getRowKey(BemPatrimonial object) {
         return object.getId();
-    }
-
-    @Override
-    public BemPatrimonial getRowData(String rowKey) {
-        return super.getRowData(rowKey); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

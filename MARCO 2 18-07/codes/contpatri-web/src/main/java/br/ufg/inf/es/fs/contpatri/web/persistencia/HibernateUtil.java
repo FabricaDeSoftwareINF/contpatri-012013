@@ -26,49 +26,67 @@ import org.hibernate.cfg.AnnotationConfiguration;
 /**
  * Hibernate Utility class with a convenient method to get Session Factory
  * object.
- * 
+ *
  * @author Guilherme de Paula <guilherme.p.pereira at gmail.com>
  */
 public class HibernateUtil {
 
-	private static final SessionFactory SESSION_FACTORY;
+    private static final SessionFactory SESSION_FACTORY;
 
-	static {
-		try {
-			// Create the SessionFactory from standard (hibernate.cfg.xml)
-			// config file.
-			SESSION_FACTORY = new AnnotationConfiguration().configure()
-					.buildSessionFactory();
-		} catch (Throwable ex) {
-			// Log the exception.
-			System.err.println("Initial SessionFactory creation failed." + ex);
-			throw new ExceptionInInitializerError(ex);
-		}
-	}
+    static {
+        try {
+            // Create the SessionFactory from standard (hibernate.cfg.xml)
+            // config file.
+            SESSION_FACTORY = new AnnotationConfiguration().configure()
+                    .buildSessionFactory();
+        } catch (Throwable ex) {
+            // Log the exception.
+            System.err.println("Initial SessionFactory creation failed." + ex);
+            throw new ExceptionInInitializerError(ex);
+        }
+    }
 
-	public static SessionFactory getSessionFactory() {
-		return SESSION_FACTORY;
-	}
+    public static SessionFactory getSessionFactory() {
+        return SESSION_FACTORY;
+    }
 
-	public static Session beginTransaction() {
-		Session hibernateSession = HibernateUtil.getSession();
-		hibernateSession.beginTransaction();
-		return hibernateSession;
-	}
+    /**
+     * Inicia a transação
+     *
+     * @return sessão com a transação iniciada
+     */
+    public static Session beginTransaction() {
+        Session hibernateSession = HibernateUtil.getSession();
+        hibernateSession.beginTransaction();
+        return hibernateSession;
+    }
 
-	public static void commitTransaction() {
-		HibernateUtil.getSession().getTransaction().commit();
-	}
+    /**
+     * Comita a transação da sessão
+     */
+    public static void commitTransaction() {
+        HibernateUtil.getSession().getTransaction().commit();
+    }
 
-	public static void rollbackTransaction() {
-		HibernateUtil.getSession().getTransaction().rollback();
-	}
+    /**
+     * Da um "rollback" na transação
+     */
+    public static void rollbackTransaction() {
+        HibernateUtil.getSession().getTransaction().rollback();
+    }
 
-	public static void closeSession() {
-		HibernateUtil.getSession().close();
-	}
+    /**
+     * Fecha a sessão
+     */
+    public static void closeSession() {
+        HibernateUtil.getSession().close();
+    }
 
-	public static Session getSession() {
-		return SESSION_FACTORY.getCurrentSession();
-	}
+    /**
+     *
+     * @return sessão atual
+     */
+    public static Session getSession() {
+        return SESSION_FACTORY.getCurrentSession();
+    }
 }

@@ -47,10 +47,10 @@
                                           filterStyle="width:160px" filterBy="#{item.analise.situacao}" id="situacao">
                                     <p:cellEditor>
                                         <f:facet name="output">
-                                            <h:outputText value="#{item.analise.situacao}" /> 
+                                            <h:outputText value="#{item.situacao}" /> 
                                         </f:facet>  
                                         <f:facet name="input">  
-                                            <h:selectOneMenu value="#{item.analise.situacao}" id="situacoes">
+                                            <h:selectOneMenu value="#{item.situacao}" id="situacoes">
                                                 <f:selectItems value="#{relatoriosBean.tiposAnalise}"
                                                                itemValue="#{situacao}"
                                                                itemLabel="#{situacao}"
