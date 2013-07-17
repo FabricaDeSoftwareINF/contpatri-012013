@@ -24,271 +24,309 @@ import java.util.Date;
 
 /**
  * Ativo fixo sobre o qual se deseja ou se necessita manter controle patrimonial
- * 
+ *
  * @author Emerson Jose Porfirio
  */
 public class BemPatrimonial implements Serializable, Cloneable {
 
-	/**
-	 * UID
-	 */
-	private static final long serialVersionUID = -4633199957240608028L;
-	
-	/**
-	 * Id do bem
-	 */
-	private Long id;
-	
-	/**
-	 * Descricao do bem
-	 */
-	private String descricao;
-	
-	/**
-	 * Data de aquisicao do bem
-	 */
-	private Date dataAquisicao;
-	
-	/**
-	 * Origem do bem
-	 */
-	private Origem origem;
-	
-	/**
-	 * Gestor do bem
-	 */
-	private Gestor gestor;
-	
-	/**
-	 * Agente
-	 */
-	private Agente agente;
-	
-	/**
-	 * Tombamento do bem
-	 */
-	private Tombamento tombamento;
-	
-	/**
-	 * Sublocal do bem
-	 */
-	private SubLocal subLocal;
+    /**
+     * UID
+     */
+    private static final long serialVersionUID = -4633199957240608028L;
+    /**
+     * Id do bem
+     */
+    private Long id;
+    private Long codigoSicop;
+    private Analise analise;
+    private Coleta coleta;
+    private String descricao;
+    private Inventario inventario;
+    /**
+     * Data de aquisicao do bem
+     */
+    private Date dataAquisicao;
+    /**
+     * Origem do bem
+     */
+    private Origem origem;
+    /**
+     * Gestor do bem
+     */
+    private Gestor gestor;
+    /**
+     * Agente
+     */
+    private Agente agente;
+    /**
+     * Tombamento do bem
+     */
+    private Tombamento tombamento;
+    /**
+     * Sublocal do bem
+     */
+    private SubLocal subLocal;
 
-	/**
-	 * Construtor de um bem patrimonial
-	 * 
-	 * @param descricao Descricao do bem
-	 * 
-	 * @param origem Origem do bem
-	 * 
-	 * @param subLocal Sublocal do bem
-	 */
-	public BemPatrimonial(String descricao, Origem origem, SubLocal subLocal) {
-		setDescricao(descricao);
-		setOrigem(origem);
-		setSubLocal(subLocal);
-	}
+    /**
+     * Construtor de um bem patrimonial
+     *
+     * @param descricao Descricao do bem
+     *
+     * @param origem Origem do bem
+     *
+     * @param subLocal Sublocal do bem
+     */
+    public BemPatrimonial(String descricao, Origem origem, SubLocal subLocal) {
+        setDescricao(descricao);
+        setOrigem(origem);
+        setSubLocal(subLocal);
+    }
 
-	/**
-	 * Define o sublocal do bem
-	 * 
-	 * @param subLocal Sublocal do bem
-	 */
-	public final void setSubLocal(SubLocal subLocal) {
-		if (subLocal == null) {
-			throw new IllegalArgumentException("O Sub Local não pode ser nulo.");
-		}
-		this.subLocal = subLocal;
-	}
+    public BemPatrimonial() {
+    }
 
-	/**
-	 * Obtem a data de aquisicao do bem
-	 * 
-	 * @return Data de aquisicao
-	 */
-	public Date getDataAquisicao() {
-		return dataAquisicao;
-	}
+    public void setSubLocal(SubLocal subLocal) {
+        if (subLocal == null) {
+            throw new IllegalArgumentException("O Sub Local não pode ser nulo.");
+        }
+        this.subLocal = subLocal;
+    }
 
-	/**
-	 * Define a data de aquisicao do bem
-	 * 
-	 * @param dataAquisicao Data de aquisicao do bem
-	 */
-	public void setDataAquisicao(Date dataAquisicao) {
-		this.dataAquisicao = dataAquisicao;
-	}
+    /**
+     * Obtem a data de aquisicao do bem
+     *
+     * @return Data de aquisicao
+     */
+    public Date getDataAquisicao() {
+        return dataAquisicao;
+    }
 
-	/**
-	 * Retorna o tombamento do bem
-	 * 
-	 * @return Tombamento do bem
-	 */
-	public Tombamento getTombamento() {
-		return tombamento;
-	}
+    /**
+     * Define a data de aquisicao do bem
+     *
+     * @param dataAquisicao Data de aquisicao do bem
+     */
+    public void setDataAquisicao(Date dataAquisicao) {
+        this.dataAquisicao = dataAquisicao;
+    }
 
-	/**
-	 * Define o tombamento do bem
-	 * 
-	 * @param tombamento Tombamento do bem
-	 */
-	public void setTombamento(Tombamento tombamento) {
-		this.tombamento = tombamento;
-	}
+    /**
+     * Retorna o tombamento do bem
+     *
+     * @return Tombamento do bem
+     */
+    public Tombamento getTombamento() {
+        return tombamento;
+    }
 
-	/**
-	 * Obtem o id do bem
-	 * 
-	 * @return Id do bem
-	 */
-	public Long getId() {
-		return id;
-	}
+    /**
+     * Define o tombamento do bem
+     *
+     * @param tombamento Tombamento do bem
+     */
+    public void setTombamento(Tombamento tombamento) {
+        this.tombamento = tombamento;
+    }
 
-	/**
-	 * Define o id do bem
-	 */
-	public void setId(Long id) {
-		this.id = id;
-	}
+    /**
+     * Obtem o id do bem
+     *
+     * @return Id do bem
+     */
+    public Long getId() {
+        return id;
+    }
 
-	/**
-	 * Obtem a descricao do bem
-	 * 
-	 * @return Descricao do bem
-	 */
-	public String getDescricao() {
-		return descricao;
-	}
+    /**
+     * Define o id do bem
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	/**
-	 * Define a descricao do bem
-	 * 
-	 * @param descricaoBreve Descricao breve do bem
-	 */
-	public final void setDescricao(String descricaoBreve) {
-		if (descricaoBreve == null || descricaoBreve.trim().isEmpty()) {
-			throw new IllegalArgumentException(
-					"A descrição não pode ser nula ou vazia");
-		}
-		this.descricao = descricaoBreve;
-	}
+    public Long getCodigoSicop() {
+        return codigoSicop;
+    }
 
-	/**
-	 * Obtem a origem do bem
-	 * 
-	 * @return A origem do bem
-	 *  
-	 * @throws CloneNotSupportedException Excecao de clonagem
-	 */
-	public Origem getOrigem() throws CloneNotSupportedException {
-		return origem.clone();
-	}
+    public void setCodigoSicop(Long codigoSicop) {
+        this.codigoSicop = codigoSicop;
+    }
 
-	/**
-	 * Define a origem do bem
-	 * 
-	 * @param origem Origem do bem 
-	 */
-	public final void setOrigem(Origem origem) {
-		if (origem == null) {
-			throw new IllegalArgumentException("A origem não pode ser nula");
-		}
-		this.origem = origem;
-	}
+    public String getDescricao() {
+        return descricao;
+    }
 
-	/**
-	 * Obtem o gestor do bem
-	 * 
-	 * @return Gestor do bem
-	 * 
-	 * @throws CloneNotSupportedException Excecao de clonagem
-	 */
-	public Gestor getGestor() throws CloneNotSupportedException {
-		return gestor.clone();
-	}
+    /**
+     * Define a descricao do bem
+     *
+     * @param descricaoBreve Descricao breve do bem
+     */
+    public final void setDescricao(String descricaoBreve) {
+        if (descricaoBreve == null || descricaoBreve.trim().isEmpty()) {
+            throw new IllegalArgumentException(
+                    "A descrição não pode ser nula ou vazia");
+        }
+        this.descricao = descricaoBreve;
+    }
 
-	/**
-	 * Define o gestor do bem
-	 * 
-	 * @param gestor Gestor do bem
-	 */
-	public void setGestor(Gestor gestor) {
-		this.gestor = gestor;
-	}
+    public Inventario getInventario() {
+        return inventario;
+    }
 
-	/**
-	 * Obtem o agente do bem
-	 * 
-	 * @return Agente do bem
-	 */
-	public Agente getAgente() {
-		return agente;
-	}
+    public void setInventario(Inventario inventario) {
+        this.inventario = inventario;
+    }
 
-	/**
-	 * Define o agente
-	 * 
-	 * @param agente Agente do bem
-	 */
-	public void setAgente(Agente agente) {
-		this.agente = agente;
-	}
+    public Analise getAnalise() {
+        return analise;
+    }
 
-	/**
-	 * Obtem o sublocal do bem
-	 * 
-	 * @return Sublocal do bem
-	 * 
-	 * @throws CloneNotSupportedException Excecao de clonagem
-	 */
-	public SubLocal getSubLocal() throws CloneNotSupportedException {
-		return subLocal.clone();
-	}
+    public void setAnalise(Analise analise) {
+        this.analise = analise;
+    }
 
-	/**
-	 * Compara um bem patrimonial
-	 */
-	@Override
-	public boolean equals(Object obj) {
-		if (obj == null) {
-			return false;
-		}
-		if (!(obj instanceof BemPatrimonial)) {
-			return false;
-		}
-		BemPatrimonial outroBem = (BemPatrimonial) obj;
-		if (this.descricao.equals(outroBem.descricao)
-				&& this.origem.equals(outroBem.origem)) {
-			return true;
-		}
-		return false;
-	}
+    public Coleta getColeta() {
+        return coleta;
+    }
 
-	/**
-	 * HashCode do bem patrimonial
-	 */
-	@Override
-	public int hashCode() {
-		final int valorInicial = 5;
-		final int valorIncremental = 15;
-		int hash = valorInicial;
-		hash = valorIncremental * hash
-				+ (getId() != null ? getId().hashCode() : 0);
-		return hash;
-	}
+    public void setColeta(Coleta coleta) {
+        this.coleta = coleta;
+    }
+    
+    
 
-	/**
-	 * Clona o bem patrimonial
-	 */
-	@Override
-	public final BemPatrimonial clone() throws CloneNotSupportedException {
-		BemPatrimonial clone = (BemPatrimonial) super.clone();
-		clone.setGestor(this.gestor == null ? null : this.gestor.clone());
-		clone.setTombamento(this.tombamento == null ? null : this.tombamento
-				.clone());
-		clone.setSubLocal(this.subLocal == null ? null : this.subLocal.clone());
-		return clone;
-	}
+    /**
+     * Obtem a origem do bem
+     *
+     * @return A origem do bem
+     *
+     * @throws CloneNotSupportedException Excecao de clonagem
+     */
+    public Origem getOrigem() throws CloneNotSupportedException {
+        return origem.clone();
+    }
+
+    /**
+     * Define a origem do bem
+     *
+     * @param origem Origem do bem
+     */
+    public final void setOrigem(Origem origem) {
+        if (origem == null) {
+            throw new IllegalArgumentException("A origem não pode ser nula");
+        }
+        this.origem = origem;
+    }
+
+    /**
+     * Obtem o gestor do bem
+     *
+     * @return Gestor do bem
+     *
+     * @throws CloneNotSupportedException Excecao de clonagem
+     */
+    public Gestor getGestor() throws CloneNotSupportedException {
+        return gestor.clone();
+    }
+
+    /**
+     * Define o gestor do bem
+     *
+     * @param gestor Gestor do bem
+     */
+    public void setGestor(Gestor gestor) {
+        this.gestor = gestor;
+    }
+
+    /**
+     * Obtem o agente do bem
+     *
+     * @return Agente do bem
+     */
+    public Agente getAgente() {
+        return agente;
+    }
+
+    /**
+     * Define o agente
+     *
+     * @param agente Agente do bem
+     */
+    public void setAgente(Agente agente) {
+        this.agente = agente;
+    }
+
+    /**
+     * Obtem o sublocal do bem
+     *
+     * @return Sublocal do bem
+     *
+     * @throws CloneNotSupportedException Excecao de clonagem
+     */
+    public SubLocal getSubLocal() throws CloneNotSupportedException {
+        return subLocal.clone();
+    }
+
+
+    public TipoSituacao getSituacao() {
+        if (analise != null){
+            return analise.getSituacao();
+        } else if (coleta != null){
+            return coleta.getSituacao();
+        } else{
+            return null;
+        }
+    }
+
+    public void setSituacao(TipoSituacao tipoSituacao) {
+        if (analise != null){
+            analise.setSituacao(tipoSituacao);
+        } else{
+            Analise analiseNova = new Analise(this, inventario, tipoSituacao);
+            setAnalise(analiseNova);
+        }
+    }
+    
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (!(obj instanceof BemPatrimonial)) {
+            return false;
+        }
+        BemPatrimonial outroBem = (BemPatrimonial) obj;
+        if (this.descricao.equals(outroBem.descricao)
+                && this.origem.equals(outroBem.origem)) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * HashCode do bem patrimonial
+     */
+    @Override
+    public int hashCode() {
+        final int valorInicial = 5;
+        final int valorIncremental = 15;
+        int hash = valorInicial;
+        hash = valorIncremental * hash
+                + (getId() != null ? getId().hashCode() : 0);
+        return hash;
+    }
+
+    /**
+     * Clona o bem patrimonial
+     */
+    @Override
+    public final BemPatrimonial clone() throws CloneNotSupportedException {
+        BemPatrimonial clone = (BemPatrimonial) super.clone();
+        clone.setGestor(this.gestor == null ? null : this.gestor.clone());
+        clone.setTombamento(this.tombamento == null ? null : this.tombamento
+                .clone());
+        clone.setSubLocal(this.subLocal == null ? null : this.subLocal.clone());
+        return clone;
+    }
 }

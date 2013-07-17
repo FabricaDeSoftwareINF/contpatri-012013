@@ -20,24 +20,22 @@
 package br.ufg.inf.es.fs.contpatri.model;
 
 /**
- * Tipos de situações ocorridas na coleta de um bem patrimonial: LOCALIZADO -
+ * Tipos de situações ocorridas na coleta ou análise de um bem patrimonial: LOCALIZADO -
  * bem encontrado no SubLocal estabelecido no Inventario REALOCADO - bem
  * encontrado em SubLocal que não o estabelecido no Inventario EXTRAVIADO - bem
  * não encontrado em SubLocal estabelecido no Inventario
- *
- * @author Emerson Jose Porfirio
  */
-public enum TipoSituacaoAnalise {
-	/**
-	 * Situacao localizado
-	 */
-	LOCALIZADO,
-	/**
-	 * Situacao realocado
-	 */
-	REALOCADO,
-	/**
-	 * Situacao extraviado
-	 */
-	EXTRAVIADO;
+public enum TipoSituacao {
+
+    LOCALIZADO("Localizado"), REALOCADO("Realocado"), EXTRAVIADO(
+    "Extraviado");
+    private String descricao;
+
+    TipoSituacao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
 }
