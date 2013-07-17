@@ -22,7 +22,7 @@ package br.ufg.inf.es.fs.contpatri.web.controller;
 
 import br.ufg.inf.es.fs.contpatri.model.Agente;
 import br.ufg.inf.es.fs.contpatri.model.interfaces.IUsuario;
-import br.ufg.inf.es.fs.contpatri.web.persistencia.dao.AgenteDAO;
+import br.ufg.inf.es.fs.contpatri.persistencia.dao.AgenteDAO;
 import java.io.Serializable;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
