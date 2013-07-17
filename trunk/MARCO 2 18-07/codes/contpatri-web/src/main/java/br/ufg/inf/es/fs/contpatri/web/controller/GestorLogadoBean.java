@@ -41,13 +41,23 @@ public class GestorLogadoBean {
      */
     public GestorLogadoBean() {
         gestorDAO = new GestorDAO();
+        
+        // Gestor atualmente logado
         gestor = gestorDAO.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
     }
 
+    /**
+     *
+     * @return gestor atualmente logado
+     */
     public Gestor getGestor() {
         return gestor;
     }
 
+    /**
+     *
+     * @param gestor
+     */
     public void setGestor(Gestor gestor) {
         this.gestor = gestor;
     }

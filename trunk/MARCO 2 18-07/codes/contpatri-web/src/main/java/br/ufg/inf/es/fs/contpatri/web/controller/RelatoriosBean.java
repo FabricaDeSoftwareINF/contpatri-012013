@@ -53,6 +53,10 @@ public class RelatoriosBean implements Serializable {
         bemPatrimonialDAO = new BemPatrimonialDAO();
     }
 
+    /**
+     *
+     * @param event evento de edição da tabela (chamado pelo primefaces)
+     */
     public void onEdit(RowEditEvent event) {
         BemPatrimonial bemPatrimonial = (BemPatrimonial) event.getObject();
 
@@ -68,22 +72,42 @@ public class RelatoriosBean implements Serializable {
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 
+    /**
+     *
+     * @return 
+     */
     public LazyDataModel getBemPatrimonialDataModel() {
         return bemPatrimonialDataModel;
     }
 
+    /**
+     *
+     * @param bemPatrimonialDataModel
+     */
     public void setBemPatrimonialDataModel(LazyDataModel bemPatrimonialDataModel) {
         this.bemPatrimonialDataModel = bemPatrimonialDataModel;
     }
 
+    /**
+     *
+     * @return registro selecionado na tabela
+     */
     public BemPatrimonial getBemPatrimonialSelecionado() {
         return bemPatrimonialSelecionado;
     }
 
+    /**
+     *
+     * @param bemPatrimonialSelecionado registro selecionado na tabela
+     */
     public void setBemPatrimonialSelecionado(BemPatrimonial bemPatrimonialSelecionado) {
         this.bemPatrimonialSelecionado = bemPatrimonialSelecionado;
     }
 
+    /**
+     *
+     * @return tipos de situação possíveis
+     */
     public List<TipoSituacao> getTiposAnalise() {
         return Arrays.asList(TipoSituacao.values());
     }

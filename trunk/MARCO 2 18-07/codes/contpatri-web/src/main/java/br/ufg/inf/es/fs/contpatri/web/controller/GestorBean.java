@@ -50,6 +50,9 @@ public class GestorBean implements Serializable, IUsuarioBean {
         usuarios = gestorDAO.findAll(Gestor.class);
     }
 
+    /**
+     * Adiciona o gestor ao banco de dados.
+     */
     @Override
     public void adicionar() {
         gestorDAO.create((Gestor) usuario);
@@ -57,38 +60,64 @@ public class GestorBean implements Serializable, IUsuarioBean {
         usuarios = gestorDAO.findAll(Gestor.class);
     }
 
+    /**
+     * Atualiza o gestor selecionado no banco de dados
+     */
     @Override
     public void editar() {
         gestorDAO.update((Gestor) usuarioSelecionado);
         usuarios = gestorDAO.findAll(Gestor.class);
     }
 
+    /**
+     * Exclui o gestor selecionado do banco de dados
+     */
     @Override
     public void excluir() {
         gestorDAO.delete((Gestor) usuarioSelecionado);
         usuarios = gestorDAO.findAll(Gestor.class);
     }
 
+    /**
+     *
+     * @return gestor preenchido na tela de cadastro
+     */
     @Override
     public IUsuario getUsuario() {
         return usuario;
     }
 
+    /**
+     *
+     * @param usuario gestor preenchido na tela de cadastro
+     */
     @Override
     public void setUsuario(IUsuario usuario) {
         this.usuario = usuario;
     }
 
+    /**
+     *
+     * @return gestor atualmente selecionado na tabela
+     */
     @Override
     public IUsuario getUsuarioSelecionado() {
         return usuarioSelecionado;
     }
 
+    /**
+     *
+     * @param usuarioSelecionado gestor atualmente selecionado na tabela
+     */
     @Override
     public void setUsuarioSelecionado(IUsuario usuarioSelecionado) {
         this.usuarioSelecionado = usuarioSelecionado;
     }
     
+    /**
+     *
+     * @return lista de todos os gestores cadastrados
+     */
     @Override
     public List<IUsuario> getUsuarios() {
         return usuarios;

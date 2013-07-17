@@ -30,6 +30,11 @@ import org.hibernate.Query;
  */
 public class GestorDAO extends GenericDAOImpl<Gestor, Long> implements Serializable {
 
+    /**
+     * 
+     * @param email endereço de email do gestor
+     * @return gestor com o email determinado
+     */
     public Gestor findByEmail(String email) {
         String hql = "from Gestor where email = :email";
         HibernateUtil.beginTransaction();

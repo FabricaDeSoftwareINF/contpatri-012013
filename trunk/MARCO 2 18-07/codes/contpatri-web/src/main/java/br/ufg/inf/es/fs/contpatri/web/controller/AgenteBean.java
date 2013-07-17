@@ -18,7 +18,6 @@
  * fornecido "da maneira que está", sem garantias ou condições de qualquer tipo,
  * nem expressas nem implícitas. Em caso de dúvidas referir a licença GNU-GPL.
  */
-
 package br.ufg.inf.es.fs.contpatri.web.controller;
 
 import br.ufg.inf.es.fs.contpatri.model.Agente;
@@ -37,10 +36,7 @@ import javax.faces.bean.ViewScoped;
 @ViewScoped
 public class AgenteBean implements Serializable, IUsuarioBean {
 
-    /**
-     * Creates a new instance of AgenteBean
-     */
-     private List<IUsuario> usuarios;
+    private List<IUsuario> usuarios;
     private IUsuario usuario;
     private IUsuario usuarioSelecionado;
     private AgenteDAO agenteDAO;
@@ -55,6 +51,9 @@ public class AgenteBean implements Serializable, IUsuarioBean {
         usuarios = agenteDAO.findAll(Agente.class);
     }
 
+    /**
+     * Adiciona o agente ao banco de dados.
+     */
     @Override
     public void adicionar() {
         agenteDAO.create((Agente) usuario);
@@ -62,38 +61,64 @@ public class AgenteBean implements Serializable, IUsuarioBean {
         usuarios = agenteDAO.findAll(Agente.class);
     }
 
+    /**
+     * Atualiza o agente selecionado no banco de dados
+     */
     @Override
     public void editar() {
         agenteDAO.update((Agente) usuarioSelecionado);
         usuarios = agenteDAO.findAll(Agente.class);
     }
 
+    /**
+     * Exclui o agente selecionado do banco de dados
+     */
     @Override
     public void excluir() {
         agenteDAO.delete((Agente) usuarioSelecionado);
         usuarios = agenteDAO.findAll(Agente.class);
     }
 
+    /**
+     *
+     * @return agente preenchido na tela de cadastro
+     */
     @Override
     public IUsuario getUsuario() {
         return usuario;
     }
 
+    /**
+     *
+     * @param usuario agente preenchido na tela de cadastro
+     */
     @Override
     public void setUsuario(IUsuario usuario) {
         this.usuario = usuario;
     }
 
+    /**
+     *
+     * @return agente atualmente selecionado na tabela
+     */
     @Override
     public IUsuario getUsuarioSelecionado() {
         return usuarioSelecionado;
     }
 
-     @Override
+    /**
+     *
+     * @param usuarioSelecionado agente atualmente selecionado na tabela
+     */
+    @Override
     public void setUsuarioSelecionado(IUsuario usuarioSelecionado) {
         this.usuarioSelecionado = usuarioSelecionado;
     }
-    
+
+    /**
+     *
+     * @return lista de todos os agentes cadastrados
+     */
     @Override
     public List<IUsuario> getUsuarios() {
         return usuarios;

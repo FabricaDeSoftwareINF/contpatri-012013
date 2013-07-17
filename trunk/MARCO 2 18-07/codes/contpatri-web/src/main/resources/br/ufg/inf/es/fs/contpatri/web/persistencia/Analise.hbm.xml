@@ -12,7 +12,7 @@
             constrained="true">
         </one-to-one>
         <many-to-one class="br.ufg.inf.es.fs.contpatri.model.Inventario" fetch="select" name="inventario">
-            <column name="idInventario" not-null="true"/>
+            <column name="idInventario"/>
         </many-to-one>
         <property name="situacao" column="tipoSituacaoAnalise">
             <type name="org.hibernate.type.EnumType">

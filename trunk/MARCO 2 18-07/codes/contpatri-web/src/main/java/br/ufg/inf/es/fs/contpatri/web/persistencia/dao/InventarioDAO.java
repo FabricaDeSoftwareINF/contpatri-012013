@@ -31,6 +31,10 @@ import org.hibernate.Session;
  */
 public class InventarioDAO extends GenericDAOImpl<Inventario, Long>  implements Serializable{
     
+    /**
+     *
+     * @return último inventario emitido
+     */
     public Inventario findUltimoInventarioEmitido(){
         String hql = "from Inventario order by dataEmissao desc";
         Session session = HibernateUtil.beginTransaction();
