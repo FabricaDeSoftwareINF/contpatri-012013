@@ -21,7 +21,7 @@ package br.ufg.inf.es.fs.contpatri.web.controller;
 
 import br.ufg.inf.es.fs.contpatri.model.Gestor;
 import br.ufg.inf.es.fs.contpatri.model.interfaces.IUsuario;
-import br.ufg.inf.es.fs.contpatri.web.persistencia.dao.GestorDAO;
+import br.ufg.inf.es.fs.contpatri.persistencia.dao.GestorDAO;
 import java.io.Serializable;
 import java.util.List;
 import javax.faces.bean.ManagedBean;

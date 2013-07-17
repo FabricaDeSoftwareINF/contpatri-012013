@@ -21,7 +21,7 @@ package br.ufg.inf.es.fs.contpatri.web.controller;
 
 import br.ufg.inf.es.fs.contpatri.model.BemPatrimonial;
 import br.ufg.inf.es.fs.contpatri.model.TipoSituacao;
-import br.ufg.inf.es.fs.contpatri.web.persistencia.dao.BemPatrimonialDAO;
+import br.ufg.inf.es.fs.contpatri.persistencia.dao.BemPatrimonialDAO;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
