@@ -12,8 +12,24 @@
         <h:panelGroup class="container-centro" layout="block">
             <h:form>
                 <cp:painel titulo="Importação">
-                    <p:commandButton value="Iniciar importação"
-                                     style="margin-left: auto; margin-right: auto; display: block;"/>
+                    <h:form enctype="multipart/form-data">  
+
+                        <h:panelGroup rendered="#{empty importarBean.arquivo}">
+                            <p:messages showDetail="true"/>  
+
+                            <p:fileUpload value="#{importarBean.arquivo}" mode="simple"/>  
+
+                            <p:commandButton value="Enviar" ajax="false"  
+                                             actionListener="#{importarBean.upload}"/>  
+                        </h:panelGroup>
+                        <h:panelGroup rendered="#{!empty importarBean.arquivo}">
+                            #{importarBean.mensagem}
+                        </h:panelGroup>
+                        
+                    </h:form>
+
+                    
+
                 </cp:painel>
             </h:form>
         </h:panelGroup>

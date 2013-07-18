@@ -19,6 +19,7 @@
  */
 package br.ufg.inf.es.fs.contpatri.model;
 
+import com.google.gson.annotations.Expose;
 import java.io.Serializable;
 
 /**
@@ -42,6 +43,7 @@ public class Analise implements Serializable {
 	/**
 	 * Bem patrimonial
 	 */
+        @Expose
 	private BemPatrimonial bemPatrimonial;
 
 	/**
@@ -52,6 +54,7 @@ public class Analise implements Serializable {
 	/**
 	 * Situacao do bem
 	 */
+        @Expose
 	private TipoSituacao situacao;
 
 	/**

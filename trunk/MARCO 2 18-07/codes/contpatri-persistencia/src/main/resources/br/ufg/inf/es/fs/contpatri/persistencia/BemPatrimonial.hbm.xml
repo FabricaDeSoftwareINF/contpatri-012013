@@ -6,10 +6,10 @@
             <column name="id" />
             <generator class="identity" />
         </id>
-        <property name="codigoSicop" type="java.lang.Long">
+        <property name="codigoSicop" type="java.lang.Long" lazy="false">
             <column name="codigoSicop" not-null="true" />
         </property>
-        <property name="descricao" type="string">
+        <property name="descricao" type="string" lazy="false">
             <column name="descricao" length="45" not-null="true" />
         </property>
         <property name="dataAquisicao" type="timestamp">

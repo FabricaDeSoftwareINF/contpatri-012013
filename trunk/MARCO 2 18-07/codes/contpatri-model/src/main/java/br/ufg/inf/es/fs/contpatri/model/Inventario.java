@@ -19,6 +19,7 @@
  */
 package br.ufg.inf.es.fs.contpatri.model;
 
+import com.google.gson.annotations.Expose;
 import java.io.Serializable;
 import java.util.*;
 
@@ -37,20 +38,27 @@ public class Inventario implements Serializable {
     /**
      * Id do inventario
      */
+    @Expose
     private Long id;
     /**
      * Data de emissao
      */
+    @Expose
     private Date dataEmissao;
     /**
      * Data de fechamento
      */
+    @Expose
     private Date dataFechamento;
     /**
      * Gestor do inventario
      */
     private Gestor gestor;
+    
+    @Expose
     private Set<Analise> analises = new HashSet<Analise>();
+    
+    @Expose
     private Set<Coleta> coletas = new HashSet<Coleta>();
     /**
      * Inventarios analisados

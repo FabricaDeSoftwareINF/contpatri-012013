@@ -22,6 +22,7 @@
 
 package br.ufg.inf.es.fs.contpatri.model;
 
+import com.google.gson.annotations.Expose;
 import java.io.Serializable;
 
 /**
@@ -43,6 +44,7 @@ public class Coleta implements Serializable {
 	/**
 	 * Bem patrimonial da coleta
 	 */
+        @Expose
 	private BemPatrimonial bemPatrimonial;
 
 	/**
@@ -53,6 +55,7 @@ public class Coleta implements Serializable {
 	/**
 	 * Situacao da coleta
 	 */
+        @Expose
 	private TipoSituacao situacao;
 
 	/**
