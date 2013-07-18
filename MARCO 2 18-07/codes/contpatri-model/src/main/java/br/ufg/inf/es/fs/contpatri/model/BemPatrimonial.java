@@ -19,6 +19,7 @@
  */
 package br.ufg.inf.es.fs.contpatri.model;
 
+import com.google.gson.annotations.Expose;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -36,11 +37,19 @@ public class BemPatrimonial implements Serializable, Cloneable {
     /**
      * Id do bem
      */
+    @Expose
     private Long id;
+    
+    @Expose
     private Long codigoSicop;
+    
     private Analise analise;
+    
     private Coleta coleta;
+    
+    @Expose
     private String descricao;
+    
     private Inventario inventario;
     /**
      * Data de aquisicao do bem
@@ -65,6 +74,7 @@ public class BemPatrimonial implements Serializable, Cloneable {
     /**
      * Sublocal do bem
      */
+    @Expose
     private SubLocal subLocal;
 
     /**
@@ -192,8 +202,6 @@ public class BemPatrimonial implements Serializable, Cloneable {
     public void setColeta(Coleta coleta) {
         this.coleta = coleta;
     }
-    
-    
 
     /**
      * Obtem a origem do bem
@@ -267,27 +275,25 @@ public class BemPatrimonial implements Serializable, Cloneable {
         return subLocal.clone();
     }
 
-
     public TipoSituacao getSituacao() {
-        if (analise != null){
+        if (analise != null) {
             return analise.getSituacao();
-        } else if (coleta != null){
+        } else if (coleta != null) {
             return coleta.getSituacao();
-        } else{
+        } else {
             return null;
         }
     }
 
     public void setSituacao(TipoSituacao tipoSituacao) {
-        if (analise != null){
+        if (analise != null) {
             analise.setSituacao(tipoSituacao);
-        } else{
+        } else {
             Analise analiseNova = new Analise(this, inventario, tipoSituacao);
             setAnalise(analiseNova);
         }
     }
-    
-    
+
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {

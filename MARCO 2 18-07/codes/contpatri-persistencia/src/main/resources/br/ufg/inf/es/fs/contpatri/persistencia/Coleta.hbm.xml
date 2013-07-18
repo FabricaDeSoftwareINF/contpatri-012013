@@ -8,7 +8,7 @@
                 <param name="property">BemPatrimonial</param>
             </generator>
         </id>
-        <one-to-one class="br.ufg.inf.es.fs.contpatri.model.BemPatrimonial" name="bemPatrimonial"
+        <one-to-one class="br.ufg.inf.es.fs.contpatri.model.BemPatrimonial" lazy="false" name="bemPatrimonial"
             constrained="true">
         </one-to-one>
         <many-to-one class="br.ufg.inf.es.fs.contpatri.model.Inventario" fetch="select" name="inventario">
