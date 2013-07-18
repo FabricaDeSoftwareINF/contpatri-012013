@@ -22,11 +22,8 @@
             <groupId>br.ufg.inf.es.fs.contpatri</groupId>
             <artifactId>contpatri-model</artifactId>
             <version>0.1-SNAPSHOT</version>
-<<<<<<< .mine
         </dependency>
-=======
-        </dependency>        
->>>>>>> .r69
+
         
         <!-- Persistência -->
         <dependency>
