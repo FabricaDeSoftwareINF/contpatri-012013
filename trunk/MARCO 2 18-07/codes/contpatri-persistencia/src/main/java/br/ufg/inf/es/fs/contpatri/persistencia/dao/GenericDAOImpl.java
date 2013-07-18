@@ -38,7 +38,6 @@ abstract class GenericDAOImpl<T, ID extends Serializable> implements
         return HibernateUtil.getSession();
     }
 
-    @Override
     public void create(T entity) {
         try {
             HibernateUtil.beginTransaction();
@@ -51,7 +50,6 @@ abstract class GenericDAOImpl<T, ID extends Serializable> implements
         }
     }
 
-    @Override
     public void update(T entity) {
         try {
             HibernateUtil.beginTransaction();
@@ -64,7 +62,6 @@ abstract class GenericDAOImpl<T, ID extends Serializable> implements
         }
     }
 
-    @Override
     public void merge(T entity) {
         try {
             HibernateUtil.beginTransaction();
@@ -77,7 +74,6 @@ abstract class GenericDAOImpl<T, ID extends Serializable> implements
         }
     }
 
-    @Override
     public void delete(T entity) {
         try {
             HibernateUtil.beginTransaction();
@@ -90,14 +86,12 @@ abstract class GenericDAOImpl<T, ID extends Serializable> implements
         }
     }
 
-    @Override
     public T findOne(Query query) {
         T t;
         t = (T) query.uniqueResult();
         return t;
     }
 
-    @Override
     public List<T> findMany(Query query) {
         List<T> t;
         t = (List<T>) query.list();
@@ -110,7 +104,6 @@ abstract class GenericDAOImpl<T, ID extends Serializable> implements
         return ((Long) query.list().get(0)).intValue();
     }
 
-    @Override
     public T findByID(Class clazz, ID id) {
         HibernateUtil.beginTransaction();
         Session hibernateSession = this.getSession();
@@ -120,7 +113,6 @@ abstract class GenericDAOImpl<T, ID extends Serializable> implements
         return t;
     }
 
-    @Override
     public List findAll(Class clazz) {
         HibernateUtil.beginTransaction();
         Session hibernateSession = this.getSession();
