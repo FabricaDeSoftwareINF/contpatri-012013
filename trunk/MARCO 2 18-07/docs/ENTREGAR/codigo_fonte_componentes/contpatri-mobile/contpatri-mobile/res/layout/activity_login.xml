@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	android:id="@+id/widget45"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical"
+	xmlns:android="http://schemas.android.com/apk/res/android">
+<EditText
+	android:id="@+id/login"
+	android:layout_width="209dp"
+	android:layout_height="wrap_content"
+	android:layout_marginTop="50dp"
+	android:layout_marginLeft="50dp"
+	android:text="LOGIN"
+	android:textSize="18sp" />
+<EditText
+	android:id="@+id/senha"
+	android:layout_width="209dp"
+	android:layout_height="46dp"
+	android:layout_marginTop="20dp"
+	android:layout_marginLeft="50dp"
+	android:text="SENHA"
+	android:textSize="18sp"
+	android:password="true" />
+<Button
+	android:id="@+id/blogin"
+	android:layout_width="100dp"
+	android:layout_height="43dp"
+	android:layout_marginTop="80dp"
+	android:layout_marginLeft="100dp"
+	android:text="LOGIN"
+	android:textSize="16sp"
+	android:textStyle="bold"
+	android:textColor="#ff000000" />
+</LinearLayout>
